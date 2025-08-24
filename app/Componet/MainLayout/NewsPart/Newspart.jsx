@@ -1,7 +1,9 @@
+// app/Component/NewsPart/Newspart.jsx
 "use client";
 
 import React, { useEffect, useState, useRef } from "react";
 import Link from "next/link";
+import axios from "axios";
 
 const Newspart = () => {
   const [data, setData] = useState([]);
@@ -15,12 +17,9 @@ const Newspart = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(
-          "https://man-pack-server.vercel.app/newspost"
-        );
-        if (!response.ok) throw new Error("Failed to fetch");
-        const result = await response.json();
-        setData(result);
+        // Use relative path instead of localhost for production compatibility
+        const response = await axios.get("/api/newspost");
+        setData(response.data.data);
         setLoading(false);
       } catch (err) {
         setError(err.message);
@@ -30,8 +29,26 @@ const Newspart = () => {
 
     fetchData();
   }, []);
+console.log(data)
+  // Format date function
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    const now = new Date();
+    const diffTime = Math.abs(now - date);
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    
+    if (diffDays < 30) {
+      return `${diffDays} day${diffDays !== 1 ? 's' : ''} ago`;
+    } else if (diffDays < 365) {
+      const months = Math.floor(diffDays / 30);
+      return `${months} month${months !== 1 ? 's' : ''} ago`;
+    } else {
+      const years = Math.floor(diffDays / 365);
+      return `${years} year${years !== 1 ? 's' : ''} ago`;
+    }
+  };
 
-  // Slide navigation
+  // Slide navigation functions
   const nextSlide = () => {
     if (currentSlide < data.length - 1) setCurrentSlide(currentSlide + 1);
   };
@@ -40,7 +57,7 @@ const Newspart = () => {
     if (currentSlide > 0) setCurrentSlide(currentSlide - 1);
   };
 
-  // Touch swipe
+  // Touch swipe handlers
   const handleTouchStart = (e) => {
     touchStartX.current = e.touches[0].clientX;
   };
@@ -85,21 +102,27 @@ const Newspart = () => {
                 className="group cursor-pointer w-full border border-gray-300 rounded-2xl md:p-5 transition-all duration-300 hover:border-indigo-600 snap-start shrink-0"
               >
                 <div className="md:flex items-center mb-6">
-                  <img
-                    src={newsdata.photoUrl}
-                    alt={newsdata.headline}
-                    className="rounded-2xl lg:h-100 h-60 w-full p-2 mx-auto"
-                  />
+                  <Link href={`/NewsPart/${newsdata.slug}`} className="block w-full">
+                    <img
+                      src={newsdata.photoUrl}
+                      alt={newsdata.headline}
+                      className="rounded-2xl lg:h-100 h-60 w-full p-2 mx-auto object-cover"
+                    />
+                  </Link>
                   <div className="block p-5">
-                    <h4 className="text-gray-900 lg:text-3xl text-base my-4 font-semibold md:leading-8">
-                      {newsdata.headline}
-                    </h4>
-                    <p className="py-3 lg:text-base text-xs">
+                    <Link href={`/NewsPart/${newsdata.slug}`}>
+                      <h4 className="text-gray-900 lg:text-3xl text-base my-4 font-semibold md:leading-8 hover:text-indigo-600 transition-colors">
+                        {newsdata.headline}
+                      </h4>
+                    </Link>
+                    <p className="py-3 lg:text-base text-xs line-clamp-3">
                       {newsdata.description}
                     </p>
                     <div className="flex gap-5 items-center justify-between font-medium">
                       <h6 className="text-sm text-gray-500">By MANS Pack C.</h6>
-                      <span className="text-sm text-indigo-600">2 year ago</span>
+                      <span className="text-sm text-indigo-600">
+                        {formatDate(newsdata.createdAt ? news.createdAt : "9")}
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -110,9 +133,8 @@ const Newspart = () => {
           {/* Navigation Arrows */}
           <button
             onClick={prevSlide}
-            className={`absolute top-1/2 -left-4 transform -translate-y-1/2 bg-gray-200 p-2 rounded-full ${
-              currentSlide === 0 ? "opacity-50 cursor-not-allowed" : ""
-            }`}
+            className={`absolute top-1/2 -left-4 transform -translate-y-1/2 bg-gray-200 p-2 rounded-full ${currentSlide === 0 ? "opacity-50 cursor-not-allowed" : ""
+              }`}
             disabled={currentSlide === 0}
             aria-label="Previous slide"
           >
@@ -120,11 +142,10 @@ const Newspart = () => {
           </button>
           <button
             onClick={nextSlide}
-            className={`absolute top-1/2 -right-4 transform -translate-y-1/2 bg-gray-200 p-2 rounded-full ${
-              currentSlide === data.length - 1
+            className={`absolute top-1/2 -right-4 transform -translate-y-1/2 bg-gray-200 p-2 rounded-full ${currentSlide === data.length - 1
                 ? "opacity-50 cursor-not-allowed"
                 : ""
-            }`}
+              }`}
             disabled={currentSlide === data.length - 1}
             aria-label="Next slide"
           >
@@ -133,7 +154,7 @@ const Newspart = () => {
         </div>
 
         <Link
-          href="/newspart"
+          href="/NewsPart"
           className="md:text-base text-[10px] cursor-pointer border border-gray-300 shadow-sm rounded-full py-3.5 px-7 w-52 flex justify-center items-center text-gray-900 font-semibold mx-auto transition-all duration-300 hover:bg-gray-100"
         >
           View All

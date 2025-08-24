@@ -1,6 +1,7 @@
 {
   "name": "mans-next",
   "version": "0.1.0",
+  "type": "module",
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
@@ -10,6 +11,7 @@
   },
   "dependencies": {
     "axios": "^1.11.0",
+    "dotenv": "^17.2.1",
     "lucide-react": "^0.540.0",
     "mongoose": "^8.18.0",
     "motion": "^12.23.12",

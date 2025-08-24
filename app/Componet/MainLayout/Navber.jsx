@@ -105,11 +105,11 @@ const Navbar = () => {
           </button>
 
           <div
-            className={`absolute right-0 mt-2 bg-white shadow-lg rounded-lg overflow-hidden transition-transform transform ${
+            className={`absolute md:w-[300px] w-[200px] right-0 mt-2 bg-white shadow-lg rounded-lg overflow-hidden transition-transform transform ${
               mobileOpen ? "scale-100 opacity-100" : "scale-95 opacity-0 pointer-events-none"
             }`}
           >
-            <ul className="flex flex-col gap-1 p-2">{renderNavItems(navItemsData, true)}</ul>
+            <ul className="flex  flex-col p-2">{renderNavItems(navItemsData, true)}</ul>
           </div>
         </div>
       </div>
