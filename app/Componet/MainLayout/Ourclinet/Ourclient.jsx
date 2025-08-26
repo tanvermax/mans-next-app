@@ -9,89 +9,72 @@ const Ourclient = () => {
   const [clients, setClients] = useState([]);
   const axiosPublic = useAxiosPublic();
 
-  const fetchClients = async () => {
-    try {
-      const res = await axiosPublic.get("/client");
-      setClients(res.data);
-    } catch (err) {
-      console.error("Error fetching client data:", err);
-    }
-  };
-
   useEffect(() => {
-    fetchClients();
-  }, []);
+    let isMounted = true;
+    axiosPublic
+      .get("/client")
+      .then((res) => {
+        if (isMounted) setClients(res.data || []);
+      })
+      .catch((err) => {
+        console.error("Error fetching client data:", err);
+      });
 
-  // Duplicate the clients array to create seamless loop
+    return () => {
+      isMounted = false;
+    };
+  }, [axiosPublic]);
+
+  // Duplicate array for seamless loop
   const duplicatedClients = [...clients, ...clients];
 
   return (
-    <div className="mx-auto py-15 overflow-hidden bg-gray-100">
-      <div className=" mx-auto px-4">
-        <h2 className="lg:text-5xl text-3xl font-bold lg:py-4 text-center">
-          Our Clients
+    <section
+      className="mx-auto py-16 bg-gray-50"
+      aria-labelledby="our-clients-title"
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        {/* Heading */}
+        <h2
+          id="our-clients-title"
+          className="lg:text-5xl md:text-4xl text-2xl font-extrabold tracking-tight text-gray-900"
+        >
+          Our <span className="text-blue-600">Clients</span>
         </h2>
-        <p className="lg:text-xl text-base text-gray-500 pb-10 text-center">
-          Pleasure to work with
+        <p className="mt-3 lg:text-lg text-sm text-gray-600">
+          Trusted by leading brands and businesses
         </p>
-
-        <div className="relative py-6 overflow-hidden">
-          {/* First Marquee */}
-          <motion.div
-            className="flex space-x-10 min-w-max"
-            animate={{ x: ["0%", "-100%"] }}
-            transition={{
-              ease: "linear",
-              duration: 100,
-              repeat: Infinity,
-            }}
-          >
-            {duplicatedClients.map((logo, index) => (
-              <motion.div
-                key={`first-${index}`}
-                whileHover={{ scale: 1.1 }}
-                className="flex-shrink-0 px-4"
-              >
-                <Image
-                  src={logo.imageUrl}
-                  alt="Client Logo"
-                  width={120}
-                  height={64}
-                  className="object-contain h-24 w-44"
-                />
-              </motion.div>
-            ))}
-          </motion.div>
-
-          {/* Second Marquee (for continuous effect)
-          <motion.div
-            className="flex space-x-10 min-w-max absolute top-6"
-            animate={{ x: ["100%", "0%"] }}
-            transition={{
-              ease: "linear",
-              duration: 100,
-              repeat: Infinity,
-            }}
-          >
-            {duplicatedClients.map((logo, index) => (
-              <motion.div
-                key={`second-${index}`}
-                whileHover={{ scale: 1.1 }}
-                className="flex-shrink-0 px-4"
-              >
-                <Image
-                  src={logo.imageUrl}
-                  alt="Client Logo"
-                  width={120}
-                  height={64}
-                  className="object-contain"
-                />
-              </motion.div>
-            ))}
-          </motion.div> */}
-        </div>
       </div>
-    </div>
+
+      {/* Scrolling Logos */}
+      <div className="relative mt-12 overflow-hidden">
+        <motion.div
+          className="flex space-x-12 min-w-max"
+          animate={{ x: ["0%", "-100%"] }}
+          transition={{
+            ease: "linear",
+            duration: 90, // faster scroll
+            repeat: Infinity,
+          }}
+        >
+          {duplicatedClients.map((logo, index) => (
+            <div
+              key={index}
+              className="flex-shrink-0 w-40 h-24 flex items-center justify-center"
+            >
+              <Image
+                src={logo.imageUrl}
+                alt={logo.name ? `${logo.name} logo` : "Client Logo"} // SEO
+                width={160}
+                height={96}
+                loading={index < 4 ? "eager" : "lazy"} // eager load first few
+                className="object-contain grayscale hover:grayscale-0 transition duration-300"
+              />
+            </div>
+          ))}
+        </motion.div>
+      </div>
+    </section>
   );
 };
 

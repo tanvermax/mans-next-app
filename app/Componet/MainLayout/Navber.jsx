@@ -22,6 +22,7 @@ const navItemsData = [
   { label: "Contact Us", href: "/contact-us" },
   { label: "About Us", href: "/about-us" },
   { label: "Knowledge", href: "/knowledge" },
+  { label: "Login", href: "/login" },
 ];
 
 const Navbar = () => {
@@ -73,7 +74,7 @@ const Navbar = () => {
     });
 
   return (
-    <nav className="sticky top-0 z-50 bg-white/70 backdrop-blur-md shadow-md">
+    <nav className="sticky top-0 z-50 bg-white/70 backdrop-blur-md ">
       <div className="container mx-auto flex items-center justify-between py-3 px-4 lg:px-0">
         {/* Logo */}
         <Link href="/" className="flex items-center">
