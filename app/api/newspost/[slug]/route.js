@@ -1,6 +1,6 @@
 // app/api/newspost/[slug]/route.js
-import dbConnect from "@/lib/mongodb";
-import News from "@/models/News";
+import dbConnect from "@/app/lib/mongodb";
+import News from "@/app/models/News";
 import { NextResponse } from "next/server";
 
 // GET /api/newspost/[slug]

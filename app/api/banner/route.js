@@ -8,7 +8,7 @@ import { NextResponse } from "next/server";
 export async function GET() {
   try {
     await dbConnect();
-    console.log("GET request received for users");
+    console.log("GET request received for banner");
     const users = await Banner.find({});
     return NextResponse.json(
       {

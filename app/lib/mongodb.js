@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 // Debug: log the environment variable
-console.log("MONGODB_URI at runtime:", process.env.MONGODB_URI);
+// console.log("MONGODB_URI at runtime:", process.env.MONGODB_URI);
 
 const MONGO_URI = process.env.MONGODB_URI;
 

@@ -9,6 +9,7 @@ import Swal from "sweetalert2";
 // import Social from "@/components/Social";
 import logo from "@/app/assets/manspackaginglogo.png";
 import useAxiosPublic from "@/app/Hook/useaxiospublic";
+import Social from "@/app/Componet/Social/Social";
 // import useAuth from "@/app/provider/useAuth";
 
 const Signup = () => {
@@ -179,7 +180,7 @@ const Signup = () => {
           </div>
 
           {/* Social Sign Up */}
-          {/* <Social /> */}
+          <Social />
 
           {/* Already have account */}
           <p className="text-center text-sm text-gray-600 mt-6">

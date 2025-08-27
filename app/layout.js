@@ -6,6 +6,7 @@ import FloatingChat from './Componet/MainLayout/FloatingChat/FloatingChat';
 import { FaFacebook, FaLinkedin, FaPhone, FaEnvelope, FaMapMarkerAlt } from "react-icons/fa";
 import { CiInstagram } from "react-icons/ci";
 import Link from 'next/link';
+import AuthProvider from './provider/AuthProvider';
 // import AuthProvider from './provider/AuthProvider';
 
 const montserrat = Montserrat({
@@ -74,15 +75,16 @@ export default function RootLayout({ children }) {
         {/* Navigation Header */}
         <header className="sticky top-0 z-50 bg-white ">
           <div className="max-w-7xl mx-auto">
-            <Navbar />
           </div>
         </header>
 
         {/* Main Content */}
         <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-         {/* <AuthProvider> */}
+         <AuthProvider>
+            <Navbar />
+
            {children}
-         {/* </AuthProvider> */}
+         </AuthProvider>
         </main>
 
         {/* Floating Chat Component */}

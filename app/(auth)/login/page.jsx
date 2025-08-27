@@ -5,10 +5,11 @@ import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 // import Social from "@/components/Social";
 import Head from "next/head";
-// import useAuth from "../provider/useAuth";
+import Social from "@/app/Componet/Social/Social";
+import useAuth from "@/app/provider/useAuth";
 
 const Login = () => {
-//   const { loginwithemail } = useAuth();
+  const { loginwithemail } = useAuth();
   const router = useRouter();
   const {
     register,
@@ -127,12 +128,12 @@ const Login = () => {
           </div>
 
           {/* Social Login */}
-          {/* <Social /> */}
+          <Social />
 
           {/* Sign Up Link */}
           <p className="text-center text-sm text-gray-600 mt-6">
             Don’t have an account?{" "}
-            <a href="/register" className="text-blue-600 font-medium hover:underline">
+            <a href="/signup" className="text-blue-600 font-medium hover:underline">
               Sign up
             </a>
           </p>
