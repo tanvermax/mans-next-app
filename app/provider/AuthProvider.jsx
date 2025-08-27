@@ -90,3 +90,9 @@ const AuthProvider = ({ children }) => {
 };
 
 export default AuthProvider;
+
+
+// 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- sercret
+
+
+// 994758518387-54lb6o9spgttavtppsn37js16s3g8grn.apps.googleusercontent.com-id

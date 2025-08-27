@@ -17,14 +17,14 @@ const Dashitem = () => {
 
 
   const menuItems = [
-    { label: "Home", href: "/dashbord/adminhome", icon: <SiHomebridge /> },
-    { label: "Post", href: "/dashbord/itemdetails", icon: <FaThList /> },
-    { label: "User", href: "/dashbord/userdetails", icon: <FaRegUserCircle /> },
-    { label: "Banner", href: "/dashbord/dynamicbanner", icon: <PiFlagBannerFoldDuotone /> },
-    { label: "Portfolio", href: "/dashbord/portfolio", icon: <CiImport /> },
-    { label: "Client", href: "/dashbord/client", icon: <BsClipboardCheck /> },
-    { label: "Service", href: "/dashbord/service", icon: <MdHomeRepairService /> },
-    { label: "Sales", href: "/dashbord/sales", icon: <FaSellsy /> },
+    { label: "Home", href: "/admindashbord/adminhome", icon: <SiHomebridge /> },
+    { label: "Post", href: "/admindashbord/postdetails", icon: <FaThList /> },
+    { label: "User", href: "/admindashbord/userdetails", icon: <FaRegUserCircle /> },
+    { label: "Banner", href: "/admindashbord/dynamicbanner", icon: <PiFlagBannerFoldDuotone /> },
+    { label: "Portfolio", href: "/admindashbord/portfolio", icon: <CiImport /> },
+    { label: "Client", href: "/admindashbord/client", icon: <BsClipboardCheck /> },
+    { label: "Service", href: "/admindashbord/service", icon: <MdHomeRepairService /> },
+    { label: "Sales", href: "/admindashbord/sales", icon: <FaSellsy /> },
   ];
 
   return (

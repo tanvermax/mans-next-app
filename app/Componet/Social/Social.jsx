@@ -2,14 +2,15 @@ import { FaGoogle } from "react-icons/fa";
 import Swal from "sweetalert2";
 // import useAuth from "@/app/provider/useAuth";
 import axios from "axios";
-import useAuth from "@/app/provider/useAuth";
+import {  signIn  } from "next-auth/react";
+// import useAuth from "@/app/provider/useAuth";
 
 const Social = () => {
-  const { handegooglelogin } = useAuth();
+  // const { handegooglelogin } = useAuth();
 
   const handlegooglein = async () => {
     try {
-      const result = await handegooglelogin();
+      const result = await signIn("google");
       const user = result.user;
 
       const userinfo = {

@@ -156,7 +156,7 @@ const Navbar = () => {
            {
             userRole ? <> {
               userRole.role ==="admin" ? (
-                <Link href={'/dashbord'} className="px-4 py-2 text-teal-500">{userRole.name}</Link>
+                <Link href={'/admindashbord'} className="px-4 py-2 text-teal-500">{userRole.name}</Link>
               ) : (
                  <Link href={'/'} className="px-4 py-2 text-teal-500">{userRole.name}</Link>
               )
