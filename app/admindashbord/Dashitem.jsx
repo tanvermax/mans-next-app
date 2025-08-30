@@ -8,12 +8,19 @@ import { PiFlagBannerFoldDuotone } from "react-icons/pi";
 import { CiImport } from "react-icons/ci";
 import { BsClipboardCheck } from "react-icons/bs";
 import { MdHomeRepairService } from "react-icons/md";
-import axios from "axios";
-import useAuth from "../provider/useAuth";
+// import axios from "axios";
+// import useAuth from "../provider/useAuth";
+import { useSession } from "next-auth/react";
 
 
 const Dashitem = () => {
-  const { user } = useAuth();
+  // const { user } = useAuth();
+      const { data: session } = useSession();
+  
+  
+      // console.log("session user in useAdmin", session?.user)
+      const user = session?.user;
+  
 
 
   const menuItems = [

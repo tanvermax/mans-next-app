@@ -2,38 +2,41 @@ import { FaGoogle } from "react-icons/fa";
 import Swal from "sweetalert2";
 // import useAuth from "@/app/provider/useAuth";
 import axios from "axios";
-import {  signIn  } from "next-auth/react";
+import {  signIn, useSession  } from "next-auth/react";
 // import useAuth from "@/app/provider/useAuth";
 
 const Social = () => {
   // const { handegooglelogin } = useAuth();
+   const { data: session } = useSession();
 
   const handlegooglein = async () => {
     try {
-      const result = await signIn("google");
-      const user = result.user;
+      await signIn("google");
 
-      const userinfo = {
-        name: user.displayName,
-        email: user.email,
-        role: "user",
-      };
+      if (session?.user) {
+        const userinfo = {
+          name: session.user.name,
+          email: session.user.email,
+          role: "admin",
+        }
 
-      const res = await axios.post("/api/user", userinfo)
-      .catch((err) => err.response);
+        console.log("userinfo :",userinfo)
 
-      if (res?.data?.insertedId) {
-        Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: "Welcome! Your account has been created 🎉",
-          showConfirmButton: false,
-          timer: 1800,
-        });
-      } else if (res?.data?.message === "User already exists") {
-        console.log("User already exists, skipping insert.");
+     const res = await axios.post("/api/user", userinfo)
+     console.log("res",res)
+
+        if (res) {
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Welcome! Your account has been created 🎉",
+            showConfirmButton: false,
+            timer: 1800,
+          });
+        } else if (res?.data?.message === "User already exists") {
+          console.log("User already exists, skipping insert.");
+        }
       }
-
     } catch (error) {
       console.error("Google sign-in error:", error);
     }

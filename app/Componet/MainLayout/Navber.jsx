@@ -4,7 +4,8 @@ import Link from "next/link";
 import Image from "next/image";
 import {   useState } from "react";
 import logo from "../../../app/manspackaginglogo.png";
-import useAdmin from "@/app/Hook/useAdmin";
+// import useAdmin from "@/app/Hook/useAdmin";
+import { useSession } from "next-auth/react";
 
 // import useAuth from "@/app/provider/useAuth";
 
@@ -30,9 +31,15 @@ const navItemsData = [
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const {userRole} =useAdmin();
+  // const {userRole} =useAdmin();
 
-  console.log("userRole",userRole)
+      const { data: session } = useSession();
+  
+    // console.log("session user",session?.user)
+    const userRole = session?.user
+    console.log("session user",userRole)
+
+  // console.log("userRole",userRole)
 //   const { user } = useAuth()
 //   const [userRole, setUserRole] = useState(null);
 //   const [isLoading, setIsLoading] = useState(false);
@@ -61,7 +68,7 @@ const Navbar = () => {
 //     fetchUserRole();
 //   }, [user]);
 
-  console.log(" userRole",userRole)
+  // console.log(" userRole",userRole)
 
   const renderNavItems = (items, isMobile = false) =>
     items.map((item) => {
@@ -69,7 +76,7 @@ const Navbar = () => {
         return (
           <li key={item.label} className={`relative group ${isMobile ? "" : "cursor-pointer"}`}>
             <span
-              className={`block px-4 py-2 text-[8px] md:text-base ${isMobile ? "hover:bg-gray-100 rounded" : "hover:text-blue-600 transition-colors duration-300"
+              className={`block px-4 py-2 text-black  text-[8px] md:text-base ${isMobile ? "hover:bg-gray-100 rounded" : "hover:text-blue-600 transition-colors duration-300"
                 }`}
             >
               {item.label}
@@ -90,7 +97,7 @@ const Navbar = () => {
         <li key={item.label}>
           <Link
             href={item.href}
-            className={`block px-4 text-[8px] md:text-base md:w-full w-[100px] py-2 ${isMobile
+            className={`block px-4 text-black text-[8px] md:text-base md:w-full w-[100px] py-2 ${isMobile
                 ? "hover:bg-gray-100 rounded"
                 : "relative group hover:text-blue-600 transition-colors duration-300"
               }`}
@@ -153,17 +160,19 @@ const Navbar = () => {
               }`}
           >
             <ul className="flex  flex-col p-2">{renderNavItems(navItemsData, true)}</ul>
-           {
+           <div className="p-2">
+            {
             userRole ? <> {
               userRole.role ==="admin" ? (
-                <Link href={'/admindashbord'} className="px-4 py-2 text-teal-500">{userRole.name}</Link>
+                <Link href={'/admindashbord'} className="px-4 py-3 text-teal-500">{userRole.name}</Link>
               ) : (
-                 <Link href={'/'} className="px-4 py-2 text-teal-500">{userRole.name}</Link>
+                 <Link href={'/'} className="px-4 py-3 text-teal-500">{userRole.name}</Link>
               )
-            }</> : <Link href="/login" className="px-4 py-2">
+            }</> : <Link href="/login" className="px-4 py-3">
                   Login
                 </Link>
            }
+           </div>
           </div>
         </div>
       </div>

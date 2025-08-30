@@ -127,7 +127,7 @@ const UserDetails = () => {
                       className="w-10 h-10 rounded-full object-cover border border-gray-200"
                       src={
                         user.photoURL ||
-                        "https://i.ibb.co/0jqHpnp/default-user.png"
+                        "https://random-image-pepebigotes.vercel.app/api/random-image"
                       }
                       alt={user.userName}
                     />

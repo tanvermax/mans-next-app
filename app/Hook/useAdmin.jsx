@@ -1,10 +1,17 @@
 import { useState, useEffect } from 'react';
-import useAuth from '../provider/useAuth';
+// import useAuth from '../provider/useAuth';
+import { useSession } from 'next-auth/react';
 
 const useAdmin = () => {
 
-    const { user } = useAuth()
+    // const { user } = useAuth()
+    const { data: session } = useSession();
 
+
+    // console.log("session user in useAdmin", session?.user)
+    const user = session?.user;
+
+    
     const [userRole, setUserRole] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
 
@@ -15,7 +22,7 @@ const useAdmin = () => {
                 try {
                     const response = await fetch(`/api/user?email=${user.email}`);
                     const data = await response.json();
-                    console.log('data.data', data.data);
+                    // console.log('data.data', data.data);
                     setUserRole(data.data);
                 } catch (error) {
                     console.error('Failed to fetch user role:', error);

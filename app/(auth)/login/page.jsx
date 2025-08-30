@@ -6,10 +6,10 @@ import { useRouter } from "next/navigation";
 // import Social from "@/components/Social";
 import Head from "next/head";
 import Social from "@/app/Componet/Social/Social";
-import useAuth from "@/app/provider/useAuth";
+// import useAuth from "@/app/provider/useAuth";
 
 const Login = () => {
-  const { loginwithemail } = useAuth();
+  // const { loginwithemail } = useAuth();
   const router = useRouter();
   const {
     register,
