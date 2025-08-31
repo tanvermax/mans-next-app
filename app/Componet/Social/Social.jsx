@@ -1,41 +1,34 @@
 import { FaGoogle } from "react-icons/fa";
 import Swal from "sweetalert2";
-// import useAuth from "@/app/provider/useAuth";
 import axios from "axios";
-import {  signIn, useSession  } from "next-auth/react";
-// import useAuth from "@/app/provider/useAuth";
+import { signIn, useSession } from "next-auth/react";
+import { toast } from "react-toastify";
+;
 
 const Social = () => {
-  // const { handegooglelogin } = useAuth();
-   const { data: session } = useSession();
+  const { data: session } = useSession();
+
+  // console.log("session.user :", session.user)
 
   const handlegooglein = async () => {
     try {
-      await signIn("google");
-
-      if (session?.user) {
+      signIn("google")
+      // console.log("session.user :",session.user)
+      if (session.user) {
         const userinfo = {
           name: session.user.name,
           email: session.user.email,
-          role: "admin",
+          photo: session.user.image,
+          role: "user",
         }
-
-        console.log("userinfo :",userinfo)
-
-     const res = await axios.post("/api/user", userinfo)
-     console.log("res",res)
-
-        if (res) {
-          Swal.fire({
-            position: "top-end",
-            icon: "success",
-            title: "Welcome! Your account has been created 🎉",
-            showConfirmButton: false,
-            timer: 1800,
-          });
-        } else if (res?.data?.message === "User already exists") {
-          console.log("User already exists, skipping insert.");
-        }
+        await axios.post("https://mans-server.vercel.app/user", userinfo)
+          .then(res => {
+            console.log("res.data", res.data);
+            if (res.data) {
+              toast.success("Welcome! Your account has been created 🎉",)
+            }
+          }
+        )
       }
     } catch (error) {
       console.error("Google sign-in error:", error);

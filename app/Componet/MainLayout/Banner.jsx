@@ -8,6 +8,7 @@ import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import Image from "next/image";
 import Loading from "../Element/Loading";
+import axios from "axios";
 
 const Banner = () => {
   const [slides, setSlides] = useState([]);
@@ -17,9 +18,13 @@ const Banner = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch("/api/banner", { cache: "no-store" });
-        const data = await res.json();
-        setSlides(data.data || []);
+       axios.get("https://mans-server.vercel.app/banner")
+       .then(res=>{
+        // console.log("res.data.data",res.data)
+
+        setSlides(res.data || []);
+      })
+        
       } catch (error) {
         console.error("Error fetching banner data:", error);
       } finally {
@@ -32,17 +37,17 @@ const Banner = () => {
   if (loading) return <Loading />;
 
   return (
-   <section aria-label="Featured Services Banner" className="w-full mx-auto relative">
+    <section aria-label="Featured Services Banner" className="w-full mx-auto relative">
       <Swiper
         spaceBetween={0}
         centeredSlides={true}
         loop={true}
-        autoplay={{ 
-          delay: 5000, 
+        autoplay={{
+          delay: 5000,
           disableOnInteraction: false,
-          pauseOnMouseEnter: true 
+          pauseOnMouseEnter: true
         }}
-        pagination={{ 
+        pagination={{
           clickable: true,
           bulletClass: "swiper-pagination-bullet bg-white opacity-50",
           bulletActiveClass: "swiper-pagination-bullet-active !opacity-100 !bg-blue-600",
@@ -78,10 +83,10 @@ const Banner = () => {
                 placeholder="blur"
                 blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaUMk9dfKbPW/GSQ6tZTFuX50aTd4MlBqpbq9mY4S8NMFq1Z3mkdExPJEDpN0f/xAAZEQEAAgMAAAAAAAAAAAAAAAABAAIRMWH/2gAIAQIBAT8AZGzEnJ//xAAZEQACAwEAAAAAAAAAAAAAAAABEQACIYH/2gAIAQMBAT8ATXWUcVn/2Q=="
               />
-              
+
               {/* Gradient overlay for better text visibility */}
               <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40" />
-              
+
               {/* Content container */}
               <div className="absolute inset-0 flex flex-col items-center justify-center text-white p-4 md:p-8">
                 <div className="text-center max-w-4xl mx-auto space-y-4 md:space-y-6">
@@ -91,11 +96,11 @@ const Banner = () => {
                   <p className="text-lg md:text-xl lg:text-2xl max-w-2xl mx-auto drop-shadow-md animate-fade-in-delayed">
                     {slide.description}
                   </p>
-                  
+
                   {/* CTA Button */}
                   <div className="pt-4 animate-fade-in-more-delayed">
-                    <a 
-                      href={slide.ctaLink || "#"} 
+                    <a
+                      href={slide.ctaLink || "#"}
                       className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
                       aria-label={`Learn more about ${slide.heading}`}
                     >
@@ -107,15 +112,15 @@ const Banner = () => {
             </div>
           </SwiperSlide>
         ))}
-        
+
         {/* Custom navigation buttons */}
         <div className="swiper-button-next !text-white !mr-8 after:!text-2xl md:after:!text-3xl" aria-label="Next slide"></div>
         <div className="swiper-button-prev !text-white !ml-8 after:!text-2xl md:after:!text-3xl" aria-label="Previous slide"></div>
       </Swiper>
-      
+
       {/* Live region for screen readers to announce slide changes */}
       <div id="slide-status" className="sr-only" aria-live="polite" aria-atomic="true"></div>
-      
+
       {/* Custom CSS for animations */}
       <style jsx>{`
         @keyframes fade-in {

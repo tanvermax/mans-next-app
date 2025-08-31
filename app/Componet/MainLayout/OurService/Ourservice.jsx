@@ -12,8 +12,11 @@ const Ourservice = () => {
 
   const fetchServices = async () => {
     try {
-      const res = await axiosPublic.get("/service");
-      setServices(res.data);
+    await axiosPublic.get("/service")
+      .then(res=>{
+        // console.log("res.data.data",res.data)
+          setServices(res.data || []);
+      })
     } catch (err) {
       console.error("Error fetching service data:", err);
     } finally {

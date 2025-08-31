@@ -3,6 +3,8 @@
 import React, { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import axios from "axios";
+import useAxiosPublic from "@/app/Hook/useaxiospublic";
 
 const Newspart = () => {
   const [data, setData] = useState([]);
@@ -14,13 +16,19 @@ const Newspart = () => {
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
   const autoplayRef = useRef(null);
+  const axiosPublic = useAxiosPublic();
+
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch("/api/newspost", { cache: "no-store" });
-        const json = await res.json();
-        setData(json.data || []);
+        axiosPublic.get("/newspost", { cache: "no-store" })
+          .then(res => {
+            console.log("res.data", res.data)
+            setData(res.data || []);
+          })
+
+
       } catch (err) {
         setError(err.message);
       } finally {
@@ -82,7 +90,7 @@ const Newspart = () => {
       }, 5000);
     }
   };
-  
+
   const prevSlide = () => {
     setCurrentSlide((prev) => (prev === 0 ? data.length - 1 : prev - 1));
     // Reset autoplay timer when manually navigating
@@ -168,7 +176,7 @@ const Newspart = () => {
           </div>
         ) : (
           <>
-            <div 
+            <div
               className="relative mb-14 overflow-hidden"
               onMouseEnter={handleMouseEnter}
               onMouseLeave={handleMouseLeave}
@@ -187,8 +195,8 @@ const Newspart = () => {
                   >
                     <div className="group bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm transition-all duration-300 hover:shadow-md hover:border-indigo-600">
                       <div className="md:flex">
-                        <Link 
-                          href={`/NewsPart/${news.slug || news._id}`} 
+                        <Link
+                          href={`/NewsPart/${news.slug || news._id}`}
                           className="block md:w-2/5 relative overflow-hidden"
                         >
                           <Image
@@ -230,7 +238,7 @@ const Newspart = () => {
                               </div>
                               <span className="text-sm text-gray-700">MANS Pack C.</span>
                             </div>
-                            <Link 
+                            <Link
                               href={`/NewsPart/${news.slug || news._id}`}
                               className="text-indigo-600 hover:text-indigo-800 font-medium text-sm flex items-center"
                             >
@@ -250,9 +258,8 @@ const Newspart = () => {
               {/* Navigation Arrows */}
               <button
                 onClick={prevSlide}
-                className={`absolute top-1/2 -left-4 transform -translate-y-1/2 bg-white p-3 rounded-full shadow-md hover:bg-gray-100 transition-colors ${
-                  currentSlide === 0 ? "opacity-50 cursor-not-allowed" : ""
-                }`}
+                className={`absolute top-1/2 -left-4 transform -translate-y-1/2 bg-white p-3 rounded-full shadow-md hover:bg-gray-100 transition-colors ${currentSlide === 0 ? "opacity-50 cursor-not-allowed" : ""
+                  }`}
                 disabled={currentSlide === 0}
                 aria-label="Previous slide"
               >
@@ -262,9 +269,8 @@ const Newspart = () => {
               </button>
               <button
                 onClick={nextSlide}
-                className={`absolute top-1/2 -right-4 transform -translate-y-1/2 bg-white p-3 rounded-full shadow-md hover:bg-gray-100 transition-colors ${
-                  currentSlide === data.length - 1 ? "opacity-50 cursor-not-allowed" : ""
-                }`}
+                className={`absolute top-1/2 -right-4 transform -translate-y-1/2 bg-white p-3 rounded-full shadow-md hover:bg-gray-100 transition-colors ${currentSlide === data.length - 1 ? "opacity-50 cursor-not-allowed" : ""
+                  }`}
                 disabled={currentSlide === data.length - 1}
                 aria-label="Next slide"
               >
@@ -279,9 +285,8 @@ const Newspart = () => {
                   <button
                     key={index}
                     onClick={() => goToSlide(index)}
-                    className={`w-2.5 h-2.5 rounded-full transition-all ${
-                      index === currentSlide ? "bg-indigo-600 w-6" : "bg-gray-300"
-                    }`}
+                    className={`w-2.5 h-2.5 rounded-full transition-all ${index === currentSlide ? "bg-indigo-600 w-6" : "bg-gray-300"
+                      }`}
                     aria-label={`Go to slide ${index + 1}`}
                   />
                 ))}

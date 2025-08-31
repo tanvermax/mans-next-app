@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import {   useState } from "react";
+import { useState } from "react";
 import logo from "../../../app/manspackaginglogo.png";
 // import useAdmin from "@/app/Hook/useAdmin";
 import { useSession } from "next-auth/react";
+import useAuth from "@/app/provider/useAuth";
 
 // import useAuth from "@/app/provider/useAuth";
 
@@ -33,40 +34,44 @@ const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   // const {userRole} =useAdmin();
 
-      const { data: session } = useSession();
-  
-    // console.log("session user",session?.user)
-    const userRole = session?.user
-    console.log("session user",userRole)
+  const { data: session } = useSession();
+  // console.log("session", session.user)
+  const {userData}= useAuth();
+
+  // console.log(userData)
+
+  // // console.log("session user",session?.user)
+  // const userRole = session?.user
+  // console.log("session user",userRole)
 
   // console.log("userRole",userRole)
-//   const { user } = useAuth()
-//   const [userRole, setUserRole] = useState(null);
-//   const [isLoading, setIsLoading] = useState(false);
+    // const { user } = useAuth()
+  //   const [userRole, setUserRole] = useState(null);
+  //   const [isLoading, setIsLoading] = useState(false);
 
-// useEffect(() => {
-//     const fetchUserRole = async () => {
-//       if (user?.email) {
-//         setIsLoading(true);
-//         try {
-//           const response = await fetch(`/api/user?email=${user.email}`);
-//           const data = await response.json();
-//           console.log("data.data",data.data)
-//             setUserRole(data.data);
-         
-//         } catch (error) {
-//           console.error("Failed to fetch user role:", error);
-//           setUserRole(null);
-//         } finally {
-//           setIsLoading(false);
-//         }
-//       } else {
-//         setUserRole(null);
-//       }
-//     };
+  // useEffect(() => {
+  //     const fetchUserRole = async () => {
+  //       if (user?.email) {
+  //         setIsLoading(true);
+  //         try {
+  //           const response = await fetch(`/api/user?email=${user.email}`);
+  //           const data = await response.json();
+  //           console.log("data.data",data.data)
+  //             setUserRole(data.data);
 
-//     fetchUserRole();
-//   }, [user]);
+  //         } catch (error) {
+  //           console.error("Failed to fetch user role:", error);
+  //           setUserRole(null);
+  //         } finally {
+  //           setIsLoading(false);
+  //         }
+  //       } else {
+  //         setUserRole(null);
+  //       }
+  //     };
+
+  //     fetchUserRole();
+  //   }, [user]);
 
   // console.log(" userRole",userRole)
 
@@ -83,8 +88,8 @@ const Navbar = () => {
             </span>
             <ul
               className={`${isMobile
-                  ? "pl-4 mt-1 flex flex-col gap-1"
-                  : "absolute opacity-0 invisible group-hover:visible group-hover:opacity-100 transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0 bg-white shadow-lg rounded-lg mt-2 w-56 z-50"
+                ? "pl-4 mt-1 flex flex-col gap-1"
+                : "absolute opacity-0 invisible group-hover:visible group-hover:opacity-100 transition-all duration-300 transform -translate-y-2 group-hover:translate-y-0 bg-white shadow-lg rounded-lg mt-2 w-56 z-50"
                 }`}
             >
               {renderNavItems(item.children, isMobile)}
@@ -98,8 +103,8 @@ const Navbar = () => {
           <Link
             href={item.href}
             className={`block px-4 text-black text-[8px] md:text-base md:w-full w-[100px] py-2 ${isMobile
-                ? "hover:bg-gray-100 rounded"
-                : "relative group hover:text-blue-600 transition-colors duration-300"
+              ? "hover:bg-gray-100 rounded"
+              : "relative group hover:text-blue-600 transition-colors duration-300"
               }`}
           >
             {item.label}
@@ -124,16 +129,34 @@ const Navbar = () => {
           <ul className="flex items-center gap-8 text-gray-800 font-medium">
             {renderNavItems(navItemsData)}
             {
-            userRole ? <> {
-              userRole.role ==="admin" ? (
-                <Link href={'/admindashbord'} className="px-4 py-2 text-teal-500">{userRole.name}</Link>
-              ) : (
-                 <Link href={'/'} className="px-4 py-2 text-teal-500">{userRole.name}</Link>
-              )
-            }</> : <Link href="/login" className="px-4 py-2">
-                  Login
-                </Link>
-           }
+              userData ? <> {
+                userData.role === "admin" ? (
+                  <Link href={'/admindashbord'} className="px-4 py-2 text-teal-500">
+                    {session.user.image && (
+                    <Image
+                      src={session.user.image}
+                      alt={session.user.name || "User"}
+                      width={40}
+                      height={40}
+                      className="rounded-full"
+                    />
+                  )}</Link>
+                ) : (
+                  
+                  <Link href={'/'} className="px-4 py-2 text-teal-500">{session.user.image && (
+                    <Image
+                      src={session.user.image}
+                      alt={session.user.name || "User"}
+                      width={40}
+                      height={40}
+                      className="rounded-full"
+                    />
+                  )}</Link>
+                )
+              }</> : <Link href="/login" className="px-4 py-2">
+                Login
+              </Link>
+            }
 
           </ul>
         </div>
@@ -160,19 +183,37 @@ const Navbar = () => {
               }`}
           >
             <ul className="flex  flex-col p-2">{renderNavItems(navItemsData, true)}</ul>
-           <div className="p-2">
-            {
-            userRole ? <> {
-              userRole.role ==="admin" ? (
-                <Link href={'/admindashbord'} className="px-4 py-3 text-teal-500">{userRole.name}</Link>
-              ) : (
-                 <Link href={'/'} className="px-4 py-3 text-teal-500">{userRole.name}</Link>
-              )
-            }</> : <Link href="/login" className="px-4 py-3">
-                  Login
-                </Link>
-           }
-           </div>
+            <div className="p-2">
+              {
+              userData ? <> {
+                userData.role === "admin" ? (
+                  <Link href={'/admindashbord'} className="px-4 py-2 text-teal-500">
+                    {session.user.image && (
+                    <Image
+                      src={session.user.image}
+                      alt={session.user.name || "User"}
+                      width={40}
+                      height={40}
+                      className="rounded-full"
+                    />
+                  )}</Link>
+                ) : (
+                  
+                  <Link href={'/'} className="px-4 py-2 text-teal-500">{session.user.image && (
+                    <Image
+                      src={session.user.image}
+                      alt={session.user.name || "User"}
+                      width={40}
+                      height={40}
+                      className="rounded-full"
+                    />
+                  )}</Link>
+                )
+              }</> : <Link href="/login" className="px-4 py-2">
+                Login
+              </Link>
+            }
+            </div>
           </div>
         </div>
       </div>
