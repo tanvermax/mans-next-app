@@ -1,6 +1,5 @@
 "use client";
 
-import React, { use, useEffect, useState } from "react";
 import Link from "next/link";
 import { FaRegUserCircle, FaSellsy, FaThList } from "react-icons/fa";
 import { SiHomebridge } from "react-icons/si";
@@ -8,19 +7,20 @@ import { PiFlagBannerFoldDuotone } from "react-icons/pi";
 import { CiImport } from "react-icons/ci";
 import { BsClipboardCheck } from "react-icons/bs";
 import { MdHomeRepairService } from "react-icons/md";
-// import axios from "axios";
-// import useAuth from "../provider/useAuth";
-import { useSession } from "next-auth/react";
+import Image from "next/image";
+import useAuth from "../provider/useAuth";
 
 
 const Dashitem = () => {
-  // const { user } = useAuth();
-      const { data: session } = useSession();
-  
-  
-      // console.log("session user in useAdmin", session?.user)
-      const user = session?.user;
-  
+
+
+  const { userData, loading } = useAuth();
+  // const user = session?.user;
+  if (loading) {
+    return <>
+      <span className="loading loading-spinner loading-sm"></span></>
+  }
+  console.log("userData,", userData)
 
 
   const menuItems = [
@@ -35,12 +35,24 @@ const Dashitem = () => {
   ];
 
   return (
-    <aside className="h-screen w-64 bg-gradient-to-b from-white to-gray-100 p-6 flex flex-col shadow-lg">
+    <aside className=" w-64 bg-gradient-to-b from-white to-gray-100 p-6 flex flex-col shadow-lg">
       {/* User Info */}
       <div className="flex flex-col items-center bg-white p-4 rounded-xl shadow-md mb-8 transition hover:shadow-xl">
-        <FaRegUserCircle className="text-5xl lg:text-6xl text-[#25AAE1] mb-2" />
-        <p className="text-lg font-semibold text-gray-800">{user?.displayName || "Guest User"}</p>
-        <p className="text-sm text-gray-500">{user?.email || "No Email"}</p>
+        {
+          userData.image ? <FaRegUserCircle className="text-5xl lg:text-6xl text-[#25AAE1] mb-2" /> : <>
+            <Image
+              src={userData.photo}
+              alt="packaging-admin"
+              height={200}
+              width={200} 
+              className="rounded-full h-20 w-20"/>
+          <div className=" absolute text-white p-2 bg-blue-400 font-semibold text-[10px] left-16 rounded-full">{userData.role}</div>
+          </>
+
+        }
+
+        <p className="text-lg font-semibold text-gray-800">{userData?.name || "Guest userData"}</p>
+        <p className="text-sm text-gray-500">{userData?.email || "No Email"}</p>
         {/* {user && (
           <p className="text-sm text-[#25AAE1] font-bold mt-1">Role: {user.role}</p>
         )} */}
@@ -49,7 +61,7 @@ const Dashitem = () => {
       {/* Dashboard Menu */}
       <h2 className="text-xl font-bold text-gray-700 mb-6 text-center">Dashboard Menu</h2>
 
-      <nav className="flex flex-col gap-3">
+      <nav className="flex flex-col gap-3 h-[400px] overflow-y-auto">
         {menuItems.map((item) => (
           <Link
             key={item.label}

@@ -20,7 +20,8 @@ const EditClinet = ({ data, refresh }) => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          const response = await axiosPublic.delete(`/client/${id}`);
+          const response = await axiosPublic.delete(`/client/${id}`)
+          // console.log(response)
           if (response.data.success === true) {
             Swal.fire("Deleted!", "Client has been deleted.", "success");
             refresh();

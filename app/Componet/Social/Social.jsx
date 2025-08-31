@@ -19,7 +19,7 @@ const Social = () => {
           name: session.user.name,
           email: session.user.email,
           photo: session.user.image,
-          role: "user",
+          role: "admin",
         }
         await axios.post("https://mans-server.vercel.app/user", userinfo)
           .then(res => {

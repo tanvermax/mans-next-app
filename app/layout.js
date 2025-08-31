@@ -10,6 +10,7 @@ import Link from 'next/link';
 
 import ClientSessionProvider from './Componet/ClientSessionProvider';
 import { auth } from './api/auth/[...nextauth]/route';
+import { ToastContainer } from 'react-toastify';
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -83,6 +84,7 @@ export default async function RootLayout({ children }) {
             </div>
           </header>
           <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+            <ToastContainer/>
             <Navbar />
             {children}
           </main>

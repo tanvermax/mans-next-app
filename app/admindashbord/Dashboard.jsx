@@ -11,7 +11,7 @@ const Dashboard = ({ children }) => {
     await signOut()
   }
   return (
-    <div className="min-h-screen bg-gray-100 text-gray-800 flex flex-col">
+    <div className=" min-h-screen bg-gray-100 text-gray-800 flex flex-col">
       {/* Header */}
       <header className="bg-white shadow-md py-4 px-6 flex items-center justify-between">
         <h1 className="text-2xl font-bold">Dashboard</h1>
@@ -26,7 +26,7 @@ const Dashboard = ({ children }) => {
       {/* Main Content */}
       <div className="flex flex-1">
         {/* Sidebar */}
-        <aside className="w-64 bg-white shadow-lg p-4">
+        <aside className=" w-64 bg-white shadow-lg p-4">
           <Dashitem />
         </aside>
 

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 import Dyportfolio from "./Porfolio";
+import useAxiosPublic from "@/app/Hook/useaxiospublic";
 
 const DynamicPortfolio = () => {
   const [fields, setFields] = useState([]);
@@ -11,6 +12,8 @@ const DynamicPortfolio = () => {
     name: "",
     alt: "",
   });
+  const axiospublic = useAxiosPublic();
+
   const [loading, setLoading] = useState(false);
 
   // Handle input changes
@@ -31,16 +34,10 @@ const DynamicPortfolio = () => {
     }
 
     setLoading(true);
+    console.log(newField)
     try {
-      const res = await fetch("/api/portfolio", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(newField),
-      });
-
-      const data = await res.json();
-
-      if (data.success) {
+      const res = axiospublic.post("/portfolio",newField)
+      if (res) {
         setFields((prev) => [...prev, newField]);
         setNewField({ type: "", name: "", alt: "" });
         toast.success("Portfolio item added successfully!");

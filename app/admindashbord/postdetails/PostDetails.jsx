@@ -13,8 +13,8 @@ const PostDetails = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("/api/newspost");
-        setData(response.data.data);
+        const response = await axios.get("https://mans-server.vercel.app/newspost");
+        setData(response.data);
         // console.log(response.data.data)
       } catch (error) {
         console.error("Error fetching posts:", error);
@@ -39,8 +39,9 @@ const PostDetails = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          const response = await axiosSecure.delete(`/newspost/${id}`);
-          if (response.data.deletedCount > 0) {
+          console.log(id)
+          const response = await axios.delete(`https://mans-server.vercel.app/newspost/${id}`);
+          if (response.status == 200) {
             Swal.fire("Deleted!", "Your post has been deleted.", "success");
             setData((prev) => prev.filter((item) => item._id !== id));
           }

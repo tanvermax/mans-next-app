@@ -3,19 +3,26 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import EditClinet from "./EditClinet";
+import useAxiosPublic from "@/app/Hook/useaxiospublic";
 
 const ClientDynamic = () => {
   const [imageUrl, setImageUrl] = useState("");
   const [altText, setAltText] = useState("");
   const [clients, setClients] = useState([]);
   const [loading, setLoading] = useState(false);
+  const axiospublic = useAxiosPublic();
+
 
   // Fetch all clients
   const fetchClients = async () => {
     try {
-      const res = await fetch("/api/client");
-      const data = await res.json();
-      setClients(data);
+      axiospublic.get("/client")
+        .then(res => {
+          console.log(res.data)
+          setClients(res.data)
+        })
+
+      // setClients(data);
     } catch (err) {
       console.error("Error fetching client data:", err);
     }
@@ -35,22 +42,21 @@ const ClientDynamic = () => {
 
     setLoading(true);
     try {
-      const res = await fetch("/api/client", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ imageUrl, altText }),
-      });
+      axiospublic.post("/client")
+        .then(res => {
+          console.log(res.data)
+          if (res.data.acknowledged == true) {
+            toast.success("Client added successfully!");
+            fetchClients();
+            setImageUrl("");
+            setAltText("");
+          }
+          else {
+            toast.error("Failed to add client.");
+          }
+        })
 
-      const data = await res.json();
-
-      if (data.success) {
-        toast.success("Client added successfully!");
-        fetchClients();
-        setImageUrl("");
-        setAltText("");
-      } else {
-        toast.error("Failed to add client.");
-      }
+     
     } catch (error) {
       console.error("Error submitting client data:", error);
       toast.error("Something went wrong!");
@@ -100,11 +106,10 @@ const ClientDynamic = () => {
           <button
             type="submit"
             disabled={loading}
-            className={`w-full py-2 px-4 rounded-lg font-semibold text-white transition ${
-              loading
-                ? "bg-blue-400 cursor-not-allowed"
-                : "bg-blue-600 hover:bg-blue-700"
-            }`}
+            className={`w-full py-2 px-4 rounded-lg font-semibold text-white transition ${loading
+              ? "bg-blue-400 cursor-not-allowed"
+              : "bg-blue-600 hover:bg-blue-700"
+              }`}
           >
             {loading ? "Adding..." : "Add Client"}
           </button>

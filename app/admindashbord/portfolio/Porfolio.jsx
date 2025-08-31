@@ -3,18 +3,24 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Swal from "sweetalert2";
+import useAxiosPublic from "@/app/Hook/useaxiospublic";
+import { toast } from "react-toastify";
 
 const Dyportfolio = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  const axiospublic = useAxiosPublic();
   // Fetch portfolio data
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch("/api/portfolio"); // Replace with your actual API endpoint
-        const result = await res.json();
-        setData(result);
+        axiospublic.get("/portfolio")
+          .then(res => {
+            console.log(res.data)
+            setData(res.data)
+          })// Replace with your actual API endpoint
+        //  console.log(res)
+        // setData(res);
       } catch (err) {
         console.error("Error fetching portfolio data:", err);
       } finally {
@@ -38,15 +44,18 @@ const Dyportfolio = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          const res = await fetch(`/api/portfolio/${id}`, {
-            method: "DELETE",
-          });
-          const response = await res.json();
 
-          if (response.success === true) {
-            Swal.fire("Deleted!", "Portfolio item has been deleted.", "success");
-            setData((prev) => prev.filter((item) => item._id !== id));
-          }
+          axiospublic.delete(`/portfolio/${id}`)
+            .then(res => {
+              console.log(res.data)
+              if (res.data.success == true) {
+                toast.warn(`Portfolio item has been deleted.`)
+                // Swal.fire("Deleted!", "Portfolio item has been deleted.", "success");
+                setData((prev) => prev.filter((item) => item._id !== id));
+              }
+            })
+
+
         } catch (error) {
           console.error("Error deleting portfolio:", error);
           Swal.fire("Error!", "Failed to delete portfolio.", "error");
@@ -102,10 +111,10 @@ const Dyportfolio = () => {
               {/* Info Section */}
               <div className="p-4">
                 <h3 className="text-sm font-semibold text-gray-800 truncate">
-                  {item.title || "Untitled Project"}
+                  {item.alt || "Untitled Project"}
                 </h3>
                 <p className="text-xs text-gray-500 mt-1 line-clamp-2">
-                  {item.description || "No description available"}
+                  {item.type || "No description available"}
                 </p>
               </div>
             </div>

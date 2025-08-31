@@ -12,8 +12,9 @@ const UserDetails = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get("/api/user");
-        setUsers(response.data.data);
+        const response = await axios.get("https://mans-server.vercel.app/user")
+        console.log(response.data)
+        setUsers(response.data);
         // console.log(response.data)
       } catch (error) {
         console.error("Error fetching users:", error);
@@ -38,7 +39,8 @@ const UserDetails = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          const response = await axiosSecure.delete(`/user/${id}`);
+          console.log(id)
+          const response = await axios.delete(`https://mans-server.vercel.app/user/${id}`);
           if (response.data.deletedCount > 0) {
             Swal.fire("Deleted!", "User has been deleted.", "success");
             setUsers((prev) => prev.filter((user) => user._id !== id));
@@ -54,7 +56,8 @@ const UserDetails = () => {
   // Update role -> Make User
   const handleMakeUser = async (user) => {
     try {
-      const res = await axiosSecure.patch(`/user/user/${user._id}`);
+      console.log(user)
+      const res = await axios.patch(`https://mans-server.vercel.app/user/user/${user._id}`);
       if (res.data.success) {
         Swal.fire("Updated!", res.data.message, "success");
         setUsers((prev) =>
@@ -71,7 +74,7 @@ const UserDetails = () => {
   // Update role -> Make Admin
   const handleMakeAdmin = async (user) => {
     try {
-      const res = await axiosSecure.patch(`/user/admin/${user._id}`);
+      const res = await axios.patch(`https://mans-server.vercel.app/user/admin/${user._id}`);
       if (res.data.success) {
         Swal.fire("Updated!", res.data.message, "success");
         setUsers((prev) =>
@@ -129,10 +132,10 @@ const UserDetails = () => {
                         user.photoURL ||
                         "https://random-image-pepebigotes.vercel.app/api/random-image"
                       }
-                      alt={user.userName}
+                      alt={user.name}
                     />
                   </td>
-                  <td className="p-3 font-medium">{user.userName}</td>
+                  <td className="p-3 font-medium">{user.name}</td>
                   <td className="p-3 text-sm text-gray-600">{user.email}</td>
                   <td className="p-3 text-center">
                     {user.role === "admin" ? (
