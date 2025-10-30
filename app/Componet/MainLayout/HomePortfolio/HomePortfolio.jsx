@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import useAxiosPublic from "@/app/Hook/useaxiospublic";
+import { Link } from "lucide-react";
 
 const HomePortfolio = () => {
   const [data, setData] = useState([]);
@@ -57,6 +58,8 @@ const HomePortfolio = () => {
           </article>
         ))}
       </div>
+      <button className="text-xl font-semibold p-5"><a href="/portfolio">View more</a></button>
+
     </section>
   );
 };
