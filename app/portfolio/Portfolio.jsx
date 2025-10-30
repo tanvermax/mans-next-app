@@ -1,25 +1,43 @@
 "use client"
 import Image from 'next/image';
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import useAxiosPublic from '../Hook/useaxiospublic';
 
 function Portfolioo() {
 
     const [filterType, setFilterType] = useState("All");
 
-    const data = [
-        { id: 1, type: "e-commerce", name: "https://i.ibb.co.com/hFWZF0Vb/chaldal-com-egg-carton-box.png", alt: "Daraz carton box" },
-        { id: 2, type: "industrial", name: "https://i.ibb.co.com/7J42Yv0z/Industrial-carton.png", alt: "Clothing carton box" },
-        { id: 3, type: "e-commerce", name: "https://i.ibb.co.com/DfD1XMHr/Daraz-products-carton.png", alt: "Daraz products carton" },
-        { id: 4, type: "e-commerce", name: "https://i.ibb.co.com/SX2LgKKy/Daaraz-carton-box-1-1.png", alt: "Daraz carton box variant" },
-        { id: 5, type: "e-commerce", name: "https://i.ibb.co.com/zh5f6RYb/Daaraz-carton-box.png", alt: "Chaldal egg carton box" },
-        { id: 6, type: "e-commerce", name: "https://i.ibb.co.com/pgx4G6Z/Clothing-carton-box-1.png", alt: "Carton box variant 2-1" },
-        { id: 7, type: "industrial", name: "https://i.ibb.co.com/PZtcK206/Autocom-carton-1.png", alt: "Carton box variant 1-1" },
-        { id: 8, type: "food", name: "https://i.ibb.co.com/DPV3mcb4/5.png", alt: "Carton box variant 5" },
-        { id: 9, type: "food", name: "https://i.ibb.co.com/XkSHfZD8/4.png", alt: "Carton box variant 4" },
-        { id: 10, type: "food", name: "https://i.ibb.co.com/Xk4pW4WB/3.png", alt: "Carton box variant 3" },
-        { id: 11, type: "e-commerce", name: "https://i.ibb.co.com/cW20gQk/2-1.png", alt: "Autocom carton box" },
-        { id: 12, type: "e-commerce", name: "https://i.ibb.co.com/8gLNs9Jf/1-1.png", alt: "Industrial carton box" },
-    ];
+    // const data = [
+    //     { id: 1, type: "e-commerce", name: "https://i.ibb.co.com/hFWZF0Vb/chaldal-com-egg-carton-box.png", alt: "Daraz carton box" },
+    //     { id: 2, type: "industrial", name: "https://i.ibb.co.com/7J42Yv0z/Industrial-carton.png", alt: "Clothing carton box" },
+    //     { id: 3, type: "e-commerce", name: "https://i.ibb.co.com/DfD1XMHr/Daraz-products-carton.png", alt: "Daraz products carton" },
+    //     { id: 4, type: "e-commerce", name: "https://i.ibb.co.com/SX2LgKKy/Daaraz-carton-box-1-1.png", alt: "Daraz carton box variant" },
+    //     { id: 5, type: "e-commerce", name: "https://i.ibb.co.com/zh5f6RYb/Daaraz-carton-box.png", alt: "Chaldal egg carton box" },
+    //     { id: 6, type: "e-commerce", name: "https://i.ibb.co.com/pgx4G6Z/Clothing-carton-box-1.png", alt: "Carton box variant 2-1" },
+    //     { id: 7, type: "industrial", name: "https://i.ibb.co.com/PZtcK206/Autocom-carton-1.png", alt: "Carton box variant 1-1" },
+    //     { id: 8, type: "food", name: "https://i.ibb.co.com/DPV3mcb4/5.png", alt: "Carton box variant 5" },
+    //     { id: 9, type: "food", name: "https://i.ibb.co.com/XkSHfZD8/4.png", alt: "Carton box variant 4" },
+    //     { id: 10, type: "food", name: "https://i.ibb.co.com/Xk4pW4WB/3.png", alt: "Carton box variant 3" },
+    //     { id: 11, type: "e-commerce", name: "https://i.ibb.co.com/cW20gQk/2-1.png", alt: "Autocom carton box" },
+    //     { id: 12, type: "e-commerce", name: "https://i.ibb.co.com/8gLNs9Jf/1-1.png", alt: "Industrial carton box" },
+    // ];
+    const [data, setData] = useState([]);
+    const axiospublic = useAxiosPublic();
+
+    useEffect(() => {
+        let isMounted = true;
+        axiospublic
+            .get("/portfolio")
+            .then((res) => {
+                if (isMounted) setData(res.data || []);
+            })
+            .catch((err) => {
+                console.error("Error fetching portfolio data:", err);
+            });
+        return () => {
+            isMounted = false;
+        };
+    }, [axiospublic]);
 
     const filteredData =
         filterType === "All"
@@ -41,8 +59,8 @@ function Portfolioo() {
                     <button
                         key={type}
                         className={`px-4 py-2 rounded text-[8px] ${filterType === type
-                                ? "bg-blue-600 text-white"
-                                : "bg-gray-200 text-black"
+                            ? "bg-blue-600 text-white"
+                            : "bg-gray-200 text-black"
                             } hover:bg-blue-500 hover:text-white transition m-1`}
                         onClick={() => setFilterType(type)}
                     >
@@ -53,12 +71,14 @@ function Portfolioo() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-5 p-10 w-11/12 mx-auto">
                 {filteredData.map((imagedata) => (
-                    <div key={imagedata.id} className="relative w-full h-60">
+                    <div key={imagedata._id} className="relative w-full h-60">
                         <Image
                             src={imagedata.name}
                             alt={imagedata.alt}
-                            layout="fill"
-                            objectFit="contain"
+
+                            fill={true}
+                            sizes="(max-width: 768px) 100vw, 50vw"
+                            style={{ objectFit: 'contain' }}
                             className="rounded"
                         />
                     </div>

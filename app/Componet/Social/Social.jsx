@@ -1,5 +1,4 @@
 import { FaGoogle } from "react-icons/fa";
-import Swal from "sweetalert2";
 import axios from "axios";
 import { signIn, useSession } from "next-auth/react";
 import { toast } from "react-toastify";

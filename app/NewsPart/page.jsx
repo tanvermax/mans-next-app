@@ -1,8 +1,7 @@
 // app/NewsPart/page.js
 import Link from "next/link";
 import Image from "next/image";
-import dbConnect from "../lib/mongodb";
-import News from "../models/News";
+import axios from 'axios'; // Import axios
 
 export const metadata = {
   title: "News & Blogs | MANS Pack",
@@ -10,8 +9,15 @@ export const metadata = {
 };
 
 export default async function NewsPage() {
-  await dbConnect();
-  const newsList = await News.find({}).sort({ createdAt: -1 });
+  let newsList = [];
+
+  try {
+    const response = await axios.get("https://mans-server.vercel.app/newspost");
+    newsList = response.data;
+  } catch (error) {
+    console.error("Failed to fetch news:", error);
+    // You can handle the error more gracefully here, e.g., show a user-friendly message
+  }
 
   const formatDate = (dateString) => {
     return new Date(dateString).toLocaleDateString('en-US', {

@@ -1,41 +1,54 @@
-/* eslint-disable @next/next/no-html-link-for-pages */
-import dbConnect from "../../lib/mongodb";
-import News from "../../models/News";
+// app/NewsPart/[slug]/page.js
 import { notFound } from "next/navigation";
 import Image from "next/image";
+import axios from 'axios'; // Import axios
+import Link from "next/link";
 
 export async function generateMetadata({ params }) {
-  await dbConnect();
-  const news = await News.findOne({ slug: params.slug });
-  
-  if (!news) {
+  try {
+    const response = await axios.get(`https://mans-server.vercel.app/newspost/${params.slug}`);
+    const news = response.data;
+
+    if (!news) {
+      return {
+        title: "Article Not Found | MANS Pack",
+      };
+    }
+
+    return {
+      title: `${news.headline} | MANS Pack`,
+      description: news.description,
+      openGraph: {
+        title: news.headline,
+        description: news.description,
+        images: [news.photoUrl],
+        type: 'article',
+        publishedTime: news.createdAt,
+      },
+      twitter: {
+        card: 'summary_large_image',
+        title: news.headline,
+        description: news.description,
+        images: [news.photoUrl],
+      },
+    };
+  } catch (error) {
+    console.error("Error fetching metadata:", error);
     return {
       title: "Article Not Found | MANS Pack",
     };
   }
-
-  return {
-    title: `${news.headline} | MANS Pack`,
-    description: news.description,
-    openGraph: {
-      title: news.headline,
-      description: news.description,
-      images: [news.photoUrl],
-      type: 'article',
-      publishedTime: news.createdAt,
-    },
-    twitter: {
-      card: 'summary_large_image',
-      title: news.headline,
-      description: news.description,
-      images: [news.photoUrl],
-    },
-  };
 }
 
 export default async function NewsArticle({ params }) {
-  await dbConnect();
-  const news = await News.findOne({ slug: params.slug });
+  let news = null;
+  
+  try {
+    const response = await axios.get(`https://mans-server.vercel.app/newspost/${params.slug}`);
+    news = response.data;
+  } catch (error) {
+    console.error("Failed to fetch news article:", error);
+  }
 
   if (!news) {
     notFound();
@@ -67,13 +80,13 @@ export default async function NewsArticle({ params }) {
         <nav className="mb-8 text-sm text-gray-600">
           <ol className="list-none p-0 inline-flex">
             <li className="flex items-center">
-              <a href="/" className="hover:text-indigo-600 transition-colors">Home</a>
+              <Link href="/" className="hover:text-indigo-600 transition-colors">Home</Link>
               <svg className="fill-current w-3 h-3 mx-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                 <path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/>
               </svg>
             </li>
             <li className="flex items-center">
-              <a href="/NewsPart" className="hover:text-indigo-600 transition-colors">News</a>
+              <Link href="/NewsPart" className="hover:text-indigo-600 transition-colors">News</Link>
               <svg className="fill-current w-3 h-3 mx-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                 <path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/>
               </svg>
@@ -184,12 +197,15 @@ export default async function NewsArticle({ params }) {
         
         {/* Back button */}
         <div className="mt-8 text-center">
-          <a href="/NewsPart" className="inline-flex items-center text-indigo-600 hover:text-indigo-800 font-medium transition-colors group">
+          <Link href="/NewsPart" className="inline-flex
+           items-center text-indigo-600
+            hover:text-indigo-800 font-medium
+             transition-colors group">
             <svg className="w-5 h-5 mr-2 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
             </svg>
             Back to all news
-          </a>
+          </Link>
         </div>
       </div>
     </div>
@@ -197,10 +213,15 @@ export default async function NewsArticle({ params }) {
 }
 
 export async function generateStaticParams() {
-  await dbConnect();
-  const newsList = await News.find({});
-  
-  return newsList.map((news) => ({
-    slug: news.slug,
-  }));
+  try {
+    const response = await axios.get("https://mans-server.vercel.app/newspost");
+    const newsList = response.data;
+    
+    return newsList.map((news) => ({
+      slug: news.slug,
+    }));
+  } catch (error) {
+    console.error("Failed to generate static params:", error);
+    return [];
+  }
 }

@@ -43,7 +43,7 @@ export default async function RootLayout({ children }) {
                 </div>
                 <div className="flex md:text-base text-[4px] items-center gap-1">
                   <FaEnvelope className="text-blue-300" />
-                  <span>contact:manspacking@gmail.com</span>
+                  <span>contact@manspackaging.com</span>
                 </div>
                 <div className="flex md:text-base text-[4px] items-center gap-1">
                   <FaMapMarkerAlt className="text-blue-300" />

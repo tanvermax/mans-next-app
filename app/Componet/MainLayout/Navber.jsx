@@ -153,9 +153,11 @@ const Navbar = () => {
                     />
                   )}</Link>
                 )
-              }</> : <Link href="/login" className="px-4 py-2">
-                Login
-              </Link>
+              }</> : 
+              ""
+              // <Link href="/login" className="px-4 py-2">
+              //   Login
+              // </Link> ""
             }
 
           </ul>
@@ -183,7 +185,7 @@ const Navbar = () => {
               }`}
           >
             <ul className="flex  flex-col p-2">{renderNavItems(navItemsData, true)}</ul>
-            <div className="p-2">
+            {/* <div className="p-2">
               {
               userData ? <> {
                 userData.role === "admin" ? (
@@ -213,7 +215,7 @@ const Navbar = () => {
                 Login
               </Link>
             }
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
