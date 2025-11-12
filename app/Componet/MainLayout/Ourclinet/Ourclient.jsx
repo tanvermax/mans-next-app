@@ -53,7 +53,7 @@ const Ourclient = () => {
           animate={{ x: ["0%", "-100%"] }}
           transition={{
             ease: "linear",
-            duration: 90, // faster scroll
+            duration: 150, // faster scroll
             repeat: Infinity,
           }}
         >
@@ -68,7 +68,7 @@ const Ourclient = () => {
                 width={160}
                 height={96}
                 loading={index < 4 ? "eager" : "lazy"} // eager load first few
-                className="object-contain grayscale hover:grayscale-0 transition duration-300"
+                className="object-contain  transition duration-300"
               />
             </div>
           ))}

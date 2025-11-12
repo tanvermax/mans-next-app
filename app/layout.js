@@ -37,15 +37,15 @@ export default async function RootLayout({ children }) {
           <div className="bg-gradient-to-r from-blue-800 to-purple-700 text-white py-2 px-4 text-sm">
             <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
               <div className="flex flex-wrap justify-center md:justify-start items-center gap-4 md:gap-6 mb-2 md:mb-0">
-                <div className="flex md:text-base text-[4px] items-center gap-1">
+                <div className="flex md:text-xs lg:text-base text-[4px] items-center gap-1">
                   <FaPhone className="text-blue-300" />
                   <span>+8801787-108216</span>
                 </div>
-                <div className="flex md:text-base text-[4px] items-center gap-1">
+                <div className="flex md:text-xs lg:text-base text-[4px] items-center gap-1">
                   <FaEnvelope className="text-blue-300" />
                   <span>contact@manspackaging.com</span>
                 </div>
-                <div className="flex md:text-base text-[4px] items-center gap-1">
+                <div className="flex md:text-xs lg:text-base text-[4px] items-center gap-1">
                   <FaMapMarkerAlt className="text-blue-300" />
                   <span>Sonir akhra, mridha bari road, Dhaka-1362</span>
                 </div>
@@ -58,7 +58,7 @@ export default async function RootLayout({ children }) {
                   aria-label="Facebook"
                   target="_blank"
                 >
-                  <FaFacebook className="text-blue-800 md:text-base text-[5px] hover:text-white transition-colors" />
+                  <FaFacebook className="text-blue-800 md:text-xs lg:text-base text-[5px] hover:text-white transition-colors" />
                 </Link>
                 <Link
                   href="https://www.linkedin.com/company/manspackaging/"
@@ -66,7 +66,7 @@ export default async function RootLayout({ children }) {
                   aria-label="LinkedIn"
                   target="_blank"
                 >
-                  <FaLinkedin className="text-blue-800 md:text-base text-[5px] hover:text-white transition-colors" />
+                  <FaLinkedin className="text-blue-800 md:text-xs lg:text-base text-[5px] hover:text-white transition-colors" />
                 </Link>
                 <Link
                   href="https://www.instagram.com/manspackaging/"
@@ -74,7 +74,7 @@ export default async function RootLayout({ children }) {
                   aria-label="Instagram"
                   target="_blank"
                 >
-                  <CiInstagram className="text-blue-800 md:text-base text-[5px] hover:text-white transition-colors" />
+                  <CiInstagram className="text-blue-800 md:text-xs lg:text-base text-[5px] hover:text-white transition-colors" />
                 </Link>
               </div>
             </div>
