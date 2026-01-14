@@ -1,6 +1,6 @@
 "use client"
 import { useState } from 'react';
-import Banner from "./Componet/MainLayout/Banner";
+import Banner from "./Componet/MainLayout/Banner/Banner";
 import Section1 from "./Componet/MainLayout/Section1.jsx/Section1";
 import Ourservice from "./Componet/MainLayout/OurService/Ourservice";
 import HomePortfolio from "./Componet/MainLayout/HomePortfolio/HomePortfolio";

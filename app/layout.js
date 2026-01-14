@@ -19,6 +19,12 @@ const montserrat = Montserrat({
 });
 
 export const metadata = {
+  icons: {
+    icon: '/Manslogo.png', // Points to public/my-custom-logo.png
+    // Optional: add specialized icons
+    // apple: '/apple-touch-icon.png', 
+    // shortcut: '/shortcut-icon.png',
+  },
   title: "MANS Packaging - Premium Packaging Solutions",
   description: "MANS Packaging offers high-quality packaging solutions for businesses of all sizes. Contact us for custom packaging needs.",
 };
@@ -28,69 +34,69 @@ export const metadata = {
 export default async function RootLayout({ children }) {
 
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       {/* CHANGED: Wrap the body with the new client component and pass the session prop */}
-  
-        <body className={`${montserrat.className} antialiased`}>
-          {/* Top Info Bar */}
-          <div className="bg-linear-to-r from-blue-800 to-purple-700 text-white py-2 px-4 text-sm">
-            <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
-              <div className="flex flex-wrap justify-center md:justify-start items-center gap-4 md:gap-6 mb-2 md:mb-0">
-                <div className="flex md:text-xs lg:text-base text-[4px] items-center gap-1">
-                  <FaPhone className="text-blue-300" />
-                  <span>+8801787-108216</span>
-                </div>
-                <div className="flex md:text-xs lg:text-base text-[4px] items-center gap-1">
-                  <FaEnvelope className="text-blue-300" />
-                  <span>contact@manspackaging.com</span>
-                </div>
-                <div className="flex md:text-xs lg:text-base text-[4px] items-center gap-1">
-                  <FaMapMarkerAlt className="text-blue-300" />
-                  <span>Sonir akhra, mridha bari road, Dhaka-1362</span>
-                </div>
+   
+      <body suppressHydrationWarning className={`${montserrat.className} antialiased`}>
+        {/* Top Info Bar */}
+        <div className="bg-linear-to-r from-blue-800 to-purple-700 text-white py-2 px-4 text-sm">
+          <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
+            <div className="flex flex-wrap justify-center md:justify-start items-center gap-4 md:gap-6 mb-2 md:mb-0">
+              <div className="flex md:text-xs lg:text-base text-[4px] items-center gap-1">
+                <FaPhone className="text-blue-300" />
+                <span>+8801787-108216</span>
               </div>
+              <div className="flex md:text-xs lg:text-base text-[4px] items-center gap-1">
+                <FaEnvelope className="text-blue-300" />
+                <span>contact@manspackaging.com</span>
+              </div>
+              <div className="flex md:text-xs lg:text-base text-[4px] items-center gap-1">
+                <FaMapMarkerAlt className="text-blue-300" />
+                <span>Sonir akhra, mridha bari road, Dhaka-1362</span>
+              </div>
+            </div>
 
-              <div className="flex md:gap-4 gap-8 justify-between">
-                <Link
-                  href="https://www.facebook.com/manspacking"
-                  className="bg-white p-2 rounded-full hover:bg-white/20 transition-colors"
-                  aria-label="Facebook"
-                  target="_blank"
-                >
-                  <FaFacebook className="text-blue-800 md:text-xs lg:text-base text-[5px] hover:text-white transition-colors" />
-                </Link>
-                <Link
-                  href="https://www.linkedin.com/company/manspackaging/"
-                  className="bg-white p-2 rounded-full hover:bg-white/20 transition-colors"
-                  aria-label="LinkedIn"
-                  target="_blank"
-                >
-                  <FaLinkedin className="text-blue-800 md:text-xs lg:text-base text-[5px] hover:text-white transition-colors" />
-                </Link>
-                <Link
-                  href="https://www.instagram.com/manspackaging/"
-                  className="bg-white p-2 rounded-full hover:bg-white/20 transition-colors"
-                  aria-label="Instagram"
-                  target="_blank"
-                >
-                  <CiInstagram className="text-blue-800 md:text-xs lg:text-base text-[5px] hover:text-white transition-colors" />
-                </Link>
-              </div>
+            <div className="flex md:gap-4 gap-8 justify-between">
+              <Link
+                href="https://www.facebook.com/manspacking"
+                className="bg-white p-2 rounded-full hover:bg-white/20 transition-colors"
+                aria-label="Facebook"
+                target="_blank"
+              >
+                <FaFacebook className="text-blue-800 md:text-xs lg:text-base text-[5px] hover:text-white transition-colors" />
+              </Link>
+              <Link
+                href="https://www.linkedin.com/company/manspackaging/"
+                className="bg-white p-2 rounded-full hover:bg-white/20 transition-colors"
+                aria-label="LinkedIn"
+                target="_blank"
+              >
+                <FaLinkedin className="text-blue-800 md:text-xs lg:text-base text-[5px] hover:text-white transition-colors" />
+              </Link>
+              <Link
+                href="https://www.instagram.com/manspackaging/"
+                className="bg-white p-2 rounded-full hover:bg-white/20 transition-colors"
+                aria-label="Instagram"
+                target="_blank"
+              >
+                <CiInstagram className="text-blue-800 md:text-xs lg:text-base text-[5px] hover:text-white transition-colors" />
+              </Link>
             </div>
           </div>
-          <header className="sticky top-0 z-50 bg-white">
-            <div className="max-w-7xl mx-auto">
-            </div>
-          </header>
-          <main className="min-h-screen bg-linear-to-b from-gray-50 to-white">
-            <ToastContainer/>
-            <Navbar />
-            {children}
-          </main>
-          <FloatingChat />
-          <Footer />
-        </body>
-      
+        </div>
+        <header className="sticky top-0 z-50 bg-white">
+          <div className="max-w-7xl mx-auto">
+          </div>
+        </header>
+        <main className="min-h-screen bg-linear-to-b from-gray-50 to-white">
+          <ToastContainer />
+          <Navbar />
+          {children}
+        </main>
+        <FloatingChat />
+        <Footer />
+      </body>
+
     </html>
   );
 }
