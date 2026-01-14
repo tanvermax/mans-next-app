@@ -1,49 +1,41 @@
 "use client"
 import Image from 'next/image';
 import React, { useEffect, useState } from 'react'
-import useAxiosPublic from '../hook/useAxiosPublic';
+import axios from 'axios';
+import Loading from '../Componet/Element/Loading';
 
 function Portfolioo() {
 
     const [filterType, setFilterType] = useState("All");
-
-    // const data = [
-    //     { id: 1, type: "e-commerce", name: "https://i.ibb.co.com/hFWZF0Vb/chaldal-com-egg-carton-box.png", alt: "Daraz carton box" },
-    //     { id: 2, type: "industrial", name: "https://i.ibb.co.com/7J42Yv0z/Industrial-carton.png", alt: "Clothing carton box" },
-    //     { id: 3, type: "e-commerce", name: "https://i.ibb.co.com/DfD1XMHr/Daraz-products-carton.png", alt: "Daraz products carton" },
-    //     { id: 4, type: "e-commerce", name: "https://i.ibb.co.com/SX2LgKKy/Daaraz-carton-box-1-1.png", alt: "Daraz carton box variant" },
-    //     { id: 5, type: "e-commerce", name: "https://i.ibb.co.com/zh5f6RYb/Daaraz-carton-box.png", alt: "Chaldal egg carton box" },
-    //     { id: 6, type: "e-commerce", name: "https://i.ibb.co.com/pgx4G6Z/Clothing-carton-box-1.png", alt: "Carton box variant 2-1" },
-    //     { id: 7, type: "industrial", name: "https://i.ibb.co.com/PZtcK206/Autocom-carton-1.png", alt: "Carton box variant 1-1" },
-    //     { id: 8, type: "food", name: "https://i.ibb.co.com/DPV3mcb4/5.png", alt: "Carton box variant 5" },
-    //     { id: 9, type: "food", name: "https://i.ibb.co.com/XkSHfZD8/4.png", alt: "Carton box variant 4" },
-    //     { id: 10, type: "food", name: "https://i.ibb.co.com/Xk4pW4WB/3.png", alt: "Carton box variant 3" },
-    //     { id: 11, type: "e-commerce", name: "https://i.ibb.co.com/cW20gQk/2-1.png", alt: "Autocom carton box" },
-    //     { id: 12, type: "e-commerce", name: "https://i.ibb.co.com/8gLNs9Jf/1-1.png", alt: "Industrial carton box" },
-    // ];
     const [data, setData] = useState([]);
-    const axiospublic = useAxiosPublic();
 
-    useEffect(() => {
-        let isMounted = true;
-        axiospublic
-            .get("/portfolio")
-            .then((res) => {
-                if (isMounted) setData(res.data || []);
-            })
-            .catch((err) => {
-                console.error("Error fetching portfolio data:", err);
-            });
-        return () => {
-            isMounted = false;
-        };
-    }, [axiospublic]);
+
+  const [loading, setLoading] = useState(true);
+
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await axios.get("https://mans-server.vercel.app/portfolio");
+      if (res.data && res.data.length > 0) {
+        setLoading(false)
+      }
+      setData(res.data || []);
+    };
+    fetchData();
+  }, [setData]);
+
+
+
 
     const filteredData =
         filterType === "All"
             ? data
             : data.filter((item) => item.type === filterType.toLowerCase());
 
+
+            if (loading) {
+                return <div><Loading /></div>
+            }
     return (
         <div>
             <div className="place-items-center md:p-24 bg-gray-300 text-center">

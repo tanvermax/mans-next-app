@@ -14,25 +14,18 @@ const Banner = () => {
   const [slides, setSlides] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // Fetch banner data once
+
   useEffect(() => {
     const fetchData = async () => {
-      try {
-       axios.get("https://mans-server.vercel.app/banner")
-       .then(res=>{
-        // console.log("res.data.data",res.data)
-
-        setSlides(res.data || []);
-      })
-        
-      } catch (error) {
-        console.error("Error fetching banner data:", error);
-      } finally {
-        setLoading(false);
+      const res = await axios.get("https://mans-server.vercel.app/banner");
+      if (res.data && res.data.length > 0) {
+        setLoading(false)
       }
+      setSlides(res.data || []);
     };
     fetchData();
-  }, []);
+  }, [setSlides]);
+  
 
   if (loading) return <Loading />;
 
