@@ -4,11 +4,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import logo from "../../../app/manspackaginglogo.png";
-// import useAdmin from "@/app/Hook/useAdmin";
-import { useSession } from "next-auth/react";
-import useAuth from "@/app/provider/useAuth";
 
-// import useAuth from "@/app/provider/useAuth";
+
+
+
 
 
 
@@ -32,48 +31,7 @@ const navItemsData = [
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
-  // const {userRole} =useAdmin();
 
-  const { data: session } = useSession();
-  // console.log("session", session.user)
-  const {userData}= useAuth();
-
-  // console.log(userData)
-
-  // // console.log("session user",session?.user)
-  // const userRole = session?.user
-  // console.log("session user",userRole)
-
-  // console.log("userRole",userRole)
-    // const { user } = useAuth()
-  //   const [userRole, setUserRole] = useState(null);
-  //   const [isLoading, setIsLoading] = useState(false);
-
-  // useEffect(() => {
-  //     const fetchUserRole = async () => {
-  //       if (user?.email) {
-  //         setIsLoading(true);
-  //         try {
-  //           const response = await fetch(`/api/user?email=${user.email}`);
-  //           const data = await response.json();
-  //           console.log("data.data",data.data)
-  //             setUserRole(data.data);
-
-  //         } catch (error) {
-  //           console.error("Failed to fetch user role:", error);
-  //           setUserRole(null);
-  //         } finally {
-  //           setIsLoading(false);
-  //         }
-  //       } else {
-  //         setUserRole(null);
-  //       }
-  //     };
-
-  //     fetchUserRole();
-  //   }, [user]);
-
-  // console.log(" userRole",userRole)
 
   const renderNavItems = (items, isMobile = false) =>
     items.map((item) => {
@@ -128,7 +86,7 @@ const Navbar = () => {
         <div className="hidden lg:flex">
           <ul className="flex items-center gap-8 text-gray-800 font-medium">
             {renderNavItems(navItemsData)}
-            {
+            {/* {
               userData ? <> {
                 userData.role === "admin" ? (
                   <Link href={'/admindashbord'} className="px-4 py-2 text-teal-500">
@@ -158,7 +116,7 @@ const Navbar = () => {
               // <Link href="/login" className="px-4 py-2">
               //   Login
               // </Link> ""
-            }
+            } */}
 
           </ul>
         </div>

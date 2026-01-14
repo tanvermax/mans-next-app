@@ -1,6 +1,6 @@
 import React from "react";
 import Head from "next/head";
-import Hook1 from "../Hook/Hook1";
+import Hook1 from "../hook/Hook1";
 
 
 

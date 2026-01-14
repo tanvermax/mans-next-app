@@ -3,30 +3,26 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import useAxiosPublic from "@/app/Hook/useaxiospublic";
+import axios from "axios";
 
 const Ourservice = () => {
-  const axiosPublic = useAxiosPublic();
+
   const [services, setServices] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const fetchServices = async () => {
-    try {
-    await axiosPublic.get("/service")
-      .then(res=>{
-        // console.log("res.data.data",res.data)
-          setServices(res.data || []);
-      })
-    } catch (err) {
-      console.error("Error fetching service data:", err);
-    } finally {
-      setLoading(false);
-    }
-  };
+
 
   useEffect(() => {
-    fetchServices();
-  }, []);
+    const fetchData = async () => {
+    const res = await axios.get("https://mans-server.vercel.app/service");
+    if(res){ setLoading(false);}
+    setServices(res.data || []);
+     };
+     fetchData();
+  }, [setServices]);
+
+
+
 
   // Animation variants for staggered children
   const containerVariants = {
@@ -52,7 +48,7 @@ const Ourservice = () => {
 
   if (loading) {
     return (
-      <section className="bg-gradient-to-b from-gray-50 to-gray-100 py-16" aria-label="Our services loading">
+      <section className="bg-linear-to-b from-gray-50 to-gray-100 py-16" aria-label="Our services loading">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <div className="h-10 bg-gray-200 rounded w-48 mx-auto mb-4"></div>
@@ -73,11 +69,11 @@ const Ourservice = () => {
   }
 
   return (
-    <section className="bg-gradient-to-b from-gray-50 to-gray-100 py-16" aria-label="Our services">
+    <section className="bg-linear-to-b from-gray-50 to-gray-100 py-16" aria-label="Our services">
       <div className="container mx-auto px-4">
         {/* SEO-optimized heading structure */}
         <header className="text-center mb-12">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -85,7 +81,7 @@ const Ourservice = () => {
           >
             Our Premium Services
           </motion.h2>
-          <motion.p 
+          <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.6 }}
@@ -96,7 +92,7 @@ const Ourservice = () => {
         </header>
 
         {/* Services grid with enhanced animations */}
-        <motion.div 
+        <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
@@ -106,7 +102,7 @@ const Ourservice = () => {
             <motion.div
               key={index}
               variants={itemVariants}
-              whileHover={{ 
+              whileHover={{
                 scale: 1.05,
                 boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
               }}
@@ -141,7 +137,7 @@ const Ourservice = () => {
         </motion.div>
 
         {/* Call to action */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.6 }}

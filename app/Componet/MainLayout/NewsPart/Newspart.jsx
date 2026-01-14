@@ -4,7 +4,6 @@ import React, { useEffect, useState, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import axios from "axios";
-import useAxiosPublic from "@/app/Hook/useaxiospublic";
 
 const Newspart = () => {
   const [data, setData] = useState([]);
@@ -16,28 +15,18 @@ const Newspart = () => {
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
   const autoplayRef = useRef(null);
-  const axiosPublic = useAxiosPublic();
 
 
   useEffect(() => {
     const fetchData = async () => {
-      try {
-        axiosPublic.get("/newspost", { cache: "no-store" })
-          .then(res => {
-            console.log("res.data", res.data)
-            setData(res.data || []);
-          })
-
-
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
+      const res = await axios.get("https://mans-server.vercel.app/newspost");
+      if(res){setLoading(false);}
+      setData(res.data || []);
     };
-
     fetchData();
-  }, []);
+  }, [setData]);
+
+
 
   // Autoplay functionality
   useEffect(() => {

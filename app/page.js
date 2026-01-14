@@ -1,3 +1,5 @@
+"use client";
+
 import Banner from "./Componet/MainLayout/Banner";
 import Section1 from "./Componet/MainLayout/Section1.jsx/Section1";
 import Ourservice from "./Componet/MainLayout/OurService/Ourservice";
@@ -7,6 +9,7 @@ import Amessage from "./Componet/MainLayout/Amessage/Amessage";
 import StatsSection from "./Componet/MainLayout/StatsSection/StatsSection.";
 import Ourclient from "./Componet/MainLayout/Ourclinet/Ourclient";
 import Mansphoto from "./Componet/MainLayout/Mansphoto/Mansphoto";
+import { useState } from 'react';
 
 export default function Home() {
   return (

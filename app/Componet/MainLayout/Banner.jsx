@@ -10,30 +10,6 @@ import Image from "next/image";
 import Loading from "../Element/Loading";
 import axios from "axios";
 
-export const genarateMetadata= async()=>{
-  try {
-    const response = await axios.get("https://mans-server.vercel.app/banner");
-    const slides = response.data || [];
-    if (slides.length > 0) {
-      return {
-        title: slides[0].heading || "MANS Packaging - Premium Packaging Solutions",
-        description: slides[0].description || "MANS Packaging offers high-quality packaging solutions for businesses of all sizes. Contact us for custom packaging needs.",
-      };
-    } else {
-      return {
-        title: "MANS Packaging - Modern Technology",
-        description: "A Leading Packaging Manufacturer Company  in Dhaka, Bangladesh.",
-      };
-    }
-  } catch (error) {
-    console.error("Error fetching banner data for metadata:", error);
-    return {
-      title: "MANS Packaging - Premium Packaging Solutions",
-      description: "MANS Packaging offers high-quality packaging solutions for businesses of all sizes. Contact us for custom packaging needs.",
-    };
-  }
-}
-
 const Banner = () => {
   const [slides, setSlides] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -57,9 +33,6 @@ const Banner = () => {
     };
     fetchData();
   }, []);
-
- 
-
 
   if (loading) return <Loading />;
 
@@ -112,7 +85,7 @@ const Banner = () => {
               />
 
               {/* Gradient overlay for better text visibility */}
-              <div className="absolute inset-0 bg-linear-to-r from-black/70 to-black/40" />
+              <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40" />
 
               {/* Content container */}
               <div className="absolute inset-0 flex flex-col items-center justify-center text-white p-4 md:p-8">
@@ -141,8 +114,8 @@ const Banner = () => {
         ))}
 
         {/* Custom navigation buttons */}
-        <div className="swiper-button-next text-white! mr-8! after:text-2xl! md:after:text-3xl!" aria-label="Next slide"></div>
-        <div className="swiper-button-prev text-white! mr-8! after:text-2xl! md:after:text-3xl!" aria-label="Previous slide"></div>
+        <div className="swiper-button-next !text-white !mr-8 after:!text-2xl md:after:!text-3xl" aria-label="Next slide"></div>
+        <div className="swiper-button-prev !text-white !ml-8 after:!text-2xl md:after:!text-3xl" aria-label="Previous slide"></div>
       </Swiper>
 
       {/* Live region for screen readers to announce slide changes */}

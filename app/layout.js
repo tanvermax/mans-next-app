@@ -8,8 +8,7 @@ import { FaFacebook, FaLinkedin, FaPhone, FaEnvelope, FaMapMarkerAlt } from "rea
 import { CiInstagram } from "react-icons/ci";
 import Link from 'next/link';
 
-import ClientSessionProvider from './Componet/ClientSessionProvider';
-import { auth } from './api/auth/[...nextauth]/route';
+
 import { ToastContainer } from 'react-toastify';
 
 const montserrat = Montserrat({
@@ -27,13 +26,11 @@ export const metadata = {
 
 
 export default async function RootLayout({ children }) {
-  // CHANGED: Get the session data on the server
-  const session = await auth();
 
   return (
     <html lang="en">
       {/* CHANGED: Wrap the body with the new client component and pass the session prop */}
-      <ClientSessionProvider session={session}>
+  
         <body className={`${montserrat.className} antialiased`}>
           {/* Top Info Bar */}
           <div className="bg-linear-to-r from-blue-800 to-purple-700 text-white py-2 px-4 text-sm">
@@ -85,7 +82,7 @@ export default async function RootLayout({ children }) {
             <div className="max-w-7xl mx-auto">
             </div>
           </header>
-          <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
+          <main className="min-h-screen bg-linear-to-b from-gray-50 to-white">
             <ToastContainer/>
             <Navbar />
             {children}
@@ -93,7 +90,7 @@ export default async function RootLayout({ children }) {
           <FloatingChat />
           <Footer />
         </body>
-      </ClientSessionProvider>
+      
     </html>
   );
 }

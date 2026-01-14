@@ -3,27 +3,21 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import useAxiosPublic from "@/app/Hook/useaxiospublic";
+import axios from "axios";
+
 
 const Ourclient = () => {
   const [clients, setClients] = useState([]);
-  const axiosPublic = useAxiosPublic();
 
   useEffect(() => {
-    let isMounted = true;
-    axiosPublic
-      .get("/client")
-      .then((res) => {
-        if (isMounted) setClients(res.data || []);
-      })
-      .catch((err) => {
-        console.error("Error fetching client data:", err);
-      });
-
-    return () => {
-      isMounted = false;
+    const fetchData = async () => {
+      const res = await axios.get("https://mans-server.vercel.app/client");
+      setClients(res.data || []);
     };
-  }, [axiosPublic]);
+    fetchData();
+  }, [setClients]);
+
+
 
   // Duplicate array for seamless loop
   const duplicatedClients = [...clients, ...clients];

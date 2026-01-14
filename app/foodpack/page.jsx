@@ -1,5 +1,5 @@
 import React from "react";
-import Hook1 from "../Hook/Hook1";
+import Hook1 from "../hook/Hook1";
 
 export const metadata = {
   title: 'Food Packaging Boxes And Solution | Mans Packaging',

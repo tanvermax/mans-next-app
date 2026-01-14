@@ -1,27 +1,26 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import useAxiosPublic from "@/app/Hook/useaxiospublic";
-import { Link } from "lucide-react";
+import axios from "axios";
+
+
+
 
 const HomePortfolio = () => {
   const [data, setData] = useState([]);
-  const axiospublic = useAxiosPublic();
+
+
 
   useEffect(() => {
-    let isMounted = true;
-    axiospublic
-      .get("/portfolio")
-      .then((res) => {
-        if (isMounted) setData(res.data || []);
-      })
-      .catch((err) => {
-        console.error("Error fetching portfolio data:", err);
-      });
-    return () => {
-      isMounted = false;
+    const fetchData = async () => {
+      const res = await axios.get("https://mans-server.vercel.app/portfolio");
+      setData(res.data || []);
     };
-  }, [axiospublic]);
+    fetchData();
+  }, [setData]);
+
+
+
 
   return (
     <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 lg:py-16 py-10 text-center">

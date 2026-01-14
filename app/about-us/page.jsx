@@ -1,6 +1,5 @@
 // app/about-us/page.jsx
 import Image from "next/image";
-import Head from "next/head";
 import photo from "../assets/mans-packaging-factory--pudimc780yapvslwii8873nj3q5m10u0cn194e3xuo.jpg";
 
 export const metadata = {
