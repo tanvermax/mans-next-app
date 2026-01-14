@@ -24,6 +24,8 @@ export const metadata = {
   description: "MANS Packaging offers high-quality packaging solutions for businesses of all sizes. Contact us for custom packaging needs.",
 };
 
+
+
 export default async function RootLayout({ children }) {
   // CHANGED: Get the session data on the server
   const session = await auth();
@@ -34,7 +36,7 @@ export default async function RootLayout({ children }) {
       <ClientSessionProvider session={session}>
         <body className={`${montserrat.className} antialiased`}>
           {/* Top Info Bar */}
-          <div className="bg-gradient-to-r from-blue-800 to-purple-700 text-white py-2 px-4 text-sm">
+          <div className="bg-linear-to-r from-blue-800 to-purple-700 text-white py-2 px-4 text-sm">
             <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
               <div className="flex flex-wrap justify-center md:justify-start items-center gap-4 md:gap-6 mb-2 md:mb-0">
                 <div className="flex md:text-xs lg:text-base text-[4px] items-center gap-1">
