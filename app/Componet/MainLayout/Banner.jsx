@@ -10,6 +10,11 @@ import Image from "next/image";
 import Loading from "../Element/Loading";
 import axios from "axios";
 
+ export const metadata = {
+  title: "Modern Technology",
+  description: "A Leading Packaging Manufacturer Company  in Dhaka, Bangladesh.",
+};
+
 const Banner = () => {
   const [slides, setSlides] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -33,6 +38,9 @@ const Banner = () => {
     };
     fetchData();
   }, []);
+
+ 
+
 
   if (loading) return <Loading />;
 
