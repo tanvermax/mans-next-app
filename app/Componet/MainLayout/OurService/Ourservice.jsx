@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import axios from "axios";
+import Link from "next/link";
 
 const Ourservice = () => {
 
@@ -144,9 +145,10 @@ const Ourservice = () => {
           className="text-center mt-16"
         >
           <p className="text-gray-700 mb-6">Ready to elevate your packaging experience?</p>
-          <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl">
-            Contact Us Today
-          </button>
+          {/* <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl"> */}
+            {/* contact-us */}
+            <Link className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl" href="/contact-us">Contact Us Today</Link>
+          {/* </button> */}
         </motion.div>
       </div>
     </section>

@@ -54,7 +54,7 @@ const Mansphoto = () => {
         viewport={{ once: true }}
         className="lg:p-10 mt-10 lg:mt-0"
       >
-        <h2 className="border-l-4 border-blue-600 lg:text-5xl text-3xl px-6 font-extrabold leading-snug">
+        <h2 className="border-l-4 text-black border-blue-600 lg:text-5xl text-3xl px-6 font-extrabold leading-snug">
           About <span className="text-blue-600">Mans Printing & Packaging</span>
         </h2>
         <p className="py-5 text-gray-700 lg:text-lg text-sm leading-relaxed">

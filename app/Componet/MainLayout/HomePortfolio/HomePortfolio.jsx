@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import axios from "axios";
+import Link from "next/link";
+
 
 
 
@@ -23,17 +25,19 @@ const HomePortfolio = () => {
 
 
   return (
-    <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 lg:py-16 py-10 text-center">
+    <section className="mx-auto py-10  flex flex-col gap-5  container  text-center ">
       {/* Heading */}
-      <h2 className="lg:text-5xl md:text-4xl text-2xl font-extrabold tracking-tight text-gray-900">
-        Our <span className="text-blue-600">Portfolio</span>
-      </h2>
-      <p className="mt-4 lg:text-lg text-sm text-gray-600">
-        A showcase of the projects we’ve successfully delivered
-      </p>
+      <div>
+        <h2 className="lg:text-5xl md:text-4xl text-2xl font-extrabold tracking-tight text-gray-900">
+          Our <span className="text-blue-600">Portfolio</span>
+        </h2>
+        <p className="mt-4 lg:text-lg text-sm text-gray-600">
+          A showcase of the projects we’ve successfully delivered
+        </p>
+      </div>
 
       {/* Portfolio Grid */}
-      <div className="mt-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+      <div className=" mt-10 grid  grid-cols-2 md:grid-cols-3  lg:grid-cols-4 py-1 gap-5">
         {[...data].reverse().slice(0, 8).map((client, index) => (
           <article
             key={index}
@@ -42,10 +46,10 @@ const HomePortfolio = () => {
             <Image
               src={client.name}
               alt={`Portfolio project ${index + 1}`} // better SEO
-              width={400}
+              width={450}
               height={300}
               priority={index < 2} // lazy loads except first 2
-              className="rounded-2xl object-cover w-full h-52 group-hover:scale-110 transition-transform duration-500 ease-in-out"
+              className="rounded-2xl  w-full h-[45vh] group-hover:scale-110 transition-transform duration-500 ease-in-out"
             />
 
             {/* Overlay */}
@@ -56,8 +60,11 @@ const HomePortfolio = () => {
             </div>
           </article>
         ))}
+
       </div>
-      <button className="text-xl font-semibold p-5"><a href="/portfolio">View more</a></button>
+     
+        <Link className=" w-[10%] mx-auto  bg-blue-600 text-white p-3 rounded-full font-semibold " href={"/portfolio"} >View more</Link>
+
 
     </section>
   );

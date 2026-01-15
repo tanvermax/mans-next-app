@@ -10,6 +10,7 @@ import Link from 'next/link';
 
 
 import { ToastContainer } from 'react-toastify';
+import Script from 'next/script';
 
 const montserrat = Montserrat({
   subsets: ['latin'],
@@ -19,14 +20,9 @@ const montserrat = Montserrat({
 });
 
 export const metadata = {
-  icons: {
-    icon: '/Manslogo.png', // Points to public/my-custom-logo.png
-    // Optional: add specialized icons
-    // apple: '/apple-touch-icon.png', 
-    // shortcut: '/shortcut-icon.png',
-  },
   title: "MANS Packaging - Premium Packaging Solutions",
   description: "MANS Packaging offers high-quality packaging solutions for businesses of all sizes. Contact us for custom packaging needs.",
+  keywords: ["packaging dhaka", "custom boxes bangladesh", "MANS packaging", "industrial packaging"],
 };
 
 
@@ -36,8 +32,28 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
       {/* CHANGED: Wrap the body with the new client component and pass the session prop */}
-   
+      <head>
+        {/* The main GTM Script goes here (as we discussed before) */}
+        <Script
+          id="gtm-script"
+          strategy="afterInteractive"
+        >
+          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+          new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+          j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+          'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+          })(window,document,'script','dataLayer','GTM-NFJSN3JD');`}
+        </Script>
+      </head>
       <body suppressHydrationWarning className={`${montserrat.className} antialiased`}>
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-NFJSN3JD"
+            height="0"
+            width="0"
+            style={{ display: 'none', visibility: 'hidden' }}
+          ></iframe>
+        </noscript>
         {/* Top Info Bar */}
         <div className="bg-linear-to-r from-blue-800 to-purple-700 text-white py-2 px-4 text-sm">
           <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
