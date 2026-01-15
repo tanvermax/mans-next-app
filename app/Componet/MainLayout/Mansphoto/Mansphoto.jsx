@@ -27,7 +27,7 @@ const Mansphoto = () => {
           <motion.div
             key={i}
             whileHover={{ scale: 1.05 }}
-            className="overflow-hidden rounded-2xl shadow-[0_20px_50px_rgba(8,_112,_184,_0.25)]"
+            className="overflow-hidden rounded-2xl bg-transparent  "
           >
             <Image
               src={img}
@@ -40,7 +40,7 @@ const Mansphoto = () => {
                   ? "Printing and packaging process at Mans"
                   : "Sustainable packaging products showcase"
               }
-              className="rounded-2xl object-cover transition-transform duration-500 hover:scale-110"
+              className=" rounded-2xl transition-transform duration-500 hover:scale-110"
             />
           </motion.div>
         ))}

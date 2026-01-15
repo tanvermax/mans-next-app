@@ -37,7 +37,7 @@ const HomePortfolio = () => {
       </div>
 
       {/* Portfolio Grid */}
-      <div className=" mt-10 grid  grid-cols-2 md:grid-cols-3  lg:grid-cols-4 py-1 gap-5">
+      <div className=" mt-10 grid  grid-cols-2 md:grid-cols-3  lg:grid-cols-4 md:py-1 px-5 gap-5">
         {[...data].reverse().slice(0, 8).map((client, index) => (
           <article
             key={index}
@@ -49,7 +49,7 @@ const HomePortfolio = () => {
               width={450}
               height={300}
               priority={index < 2} // lazy loads except first 2
-              className="rounded-2xl  w-full h-[45vh] group-hover:scale-110 transition-transform duration-500 ease-in-out"
+              className="rounded-2xl  w-full md:h-[45vh] group-hover:scale-110 transition-transform duration-500 ease-in-out"
             />
 
             {/* Overlay */}
@@ -63,7 +63,7 @@ const HomePortfolio = () => {
 
       </div>
      
-        <Link className=" w-[10%] mx-auto  bg-blue-600 text-white p-3 rounded-full font-semibold " href={"/portfolio"} >View more</Link>
+        <Link className=" md:w-[10%] mx-auto  bg-blue-600 text-white p-3 rounded-full font-semibold " href={"/portfolio"} >View more</Link>
 
 
     </section>

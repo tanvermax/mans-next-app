@@ -19,11 +19,11 @@ const Footer = () => {
                             className="w-40 mx-auto"
                             alt="Mans Packaging"
                         />
-                        <p className="mt-4 text-sm lg:text-base text-gray-400 leading-6">
+                        <p className="mt-4 text-xs lg:text-base text-gray-400 leading-6">
                             Mans Packaging is a paper-based packaging manufacturing company in Bangladesh. We provide packaging service for Food, Cosmetics, Ecommerce, Jewelry, Ceramics, Glassware’s, Pharmaceuticals, Bakery & Pastry, Agriculture & more.
                         </p>
-                        <p className="mt-4 font-semibold text-white">CONNECT WITH US</p>
-                        <div className="flex justify-center space-x-5 mt-4">
+                        <p className="mt-4 text-xs md:text-base font-semibold text-white">CONNECT WITH US</p>
+                        <div className="flex justify-center space-x-5 mt-4 ">
                             <a href="https://www.facebook.com/manspacking" className="text-blue-500 hover:scale-110 transition">
                                 <FaFacebookF size={22} />
                             </a>
@@ -52,21 +52,21 @@ const Footer = () => {
                                 <FaPhoneAlt size={20} className="text-blue-400" />
                                 <div>
                                     <p className="text-gray-400 text-sm">Tel</p>
-                                    <p className="text-white font-medium text-sm">+8801787-108216</p>
+                                    <p className="text-white font-medium text-xs md:text-base">+8801787-108216</p>
                                 </div>
                             </div>
                             <div className="flex gap-4 items-center">
                                 <FaEnvelope size={20} className="text-blue-400" />
                                 <div>
-                                    <p className="text-gray-400 text-sm">Mail</p>
-                                    <p className="text-white font-medium text-sm">contact@manspackaging.com</p>
+                                    <p className="text-gray-400 text-xs md:text-base">Mail</p>
+                                    <p className="text-white font-medium text-xs md:text-base">contact@manspackaging.com</p>
                                 </div>
                             </div>
                             <div className="flex gap-4 items-center">
                                 <FaMapMarkerAlt size={20} className="text-blue-400" />
                                 <div>
-                                    <p className="text-gray-400 text-sm">Address</p>
-                                    <p className="text-white font-medium text-sm">
+                                    <p className="text-gray-400 text-xs md:text-base">Address</p>
+                                    <p className="text-white font-medium text-xs md:text-base">
                                         Sonir Akhra, Mridha Bari Road, Dhaka-1362
                                     </p>
                                 </div>
