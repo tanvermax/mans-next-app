@@ -20,9 +20,9 @@ const montserrat = Montserrat({
 });
 
 export const metadata = {
-  title: "MANS Packaging - Premium Packaging Solutions",
-  description: "MANS Packaging offers high-quality packaging solutions for businesses of all sizes. Contact us for custom packaging needs.",
-  keywords: ["packaging dhaka", "custom boxes bangladesh", "MANS packaging", "industrial packaging"],
+  title: "MANS Packaging - Premium Packaging Solutions in BD",
+  description: "MANS Packaging offers high-quality packaging in BD solutions for businesses of all sizes. Contact us for custom packaging needs.",
+  keywords: ["packaging dhaka", "packaging in BD","custom boxes bangladesh", "MANS packaging", "industrial packaging","ecommerce packaging", "food packaging", "garment packaging", "sustainable packaging", "printing and packaging", "packaging solutions"],
 };
 
 
