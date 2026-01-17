@@ -68,14 +68,14 @@ const Faq = () => {
             {/* Question */}
             <div className="flex gap-5 py-5 place-items-center">
               <FaQuestionCircle className="text-3xl text-blue-600" />
-              <h2 className="bg-gray-100 p-3 rounded-2xl font-bold md:text-base text-xs">
+              <h2 className="bg-gray-100 p-3 text-black rounded-2xl font-bold md:text-base text-xs">
                 {d.question}
               </h2>
             </div>
 
             {/* Answer */}
             <div className="flex gap-5 py-5 place-items-center">
-              <p className="bg-indigo-100 p-3 rounded-2xl md:text-base text-xs">
+              <p className="bg-indigo-100 text-gray-600 p-3 rounded-2xl md:text-base text-xs">
                 {d.answer}
               </p>
               <Image
