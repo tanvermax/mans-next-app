@@ -22,7 +22,7 @@ const Footer = () => {
                             className="w-40 mx-auto"
                             alt="Mans Packaging"
                         />
-                        <p className="mt-4 text-xs lg:text-base text-gray-400 leading-6">
+                        <p className="mt-4 text-xs bg-[#131C2F]  lg:text-base text-gray-300 leading-6">
                             Mans Packaging is a paper-based packaging manufacturing company in Bangladesh. We provide packaging service for Food, Cosmetics, Ecommerce, Jewelry, Ceramics, Glassware’s, Pharmaceuticals, Bakery & Pastry, Agriculture & more.
                         </p>
                         <p className="mt-4 text-xs md:text-base font-semibold text-white">CONNECT WITH US</p>

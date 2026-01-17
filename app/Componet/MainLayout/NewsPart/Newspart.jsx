@@ -26,8 +26,6 @@ const Newspart = () => {
     fetchData();
   }, [setData]);
 
-
-console.log("data",data)
   // Autoplay functionality
   useEffect(() => {
     if (autoplay && data.length > 0) {
