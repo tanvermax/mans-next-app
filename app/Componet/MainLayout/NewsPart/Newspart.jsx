@@ -191,9 +191,9 @@ console.log("data",data)
                           <Image
                             src={news.photoUrl}
                             alt={news.headline}
-                            width={600}
+                            width={300}
                             height={400}
-                            className="rounded-l-2xl h-64 md:h-auto w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                            className="rounded-l-2xl md:w-full md:h-[50vh]   object-cover transition-transform duration-500 group-hover:scale-105"
                             priority={false}
                             quality={75}
                           />
