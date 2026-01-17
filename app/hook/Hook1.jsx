@@ -12,12 +12,12 @@ const Hook1 = ({
   return (
     <div className="py-10">
       {/* Main Heading */}
-      <h1 className="md:text-3xl text-xs font-bold w-11/12 mx-auto">{mainheading}</h1>
+      <h1 className="md:text-3xl text-black text-xs font-bold w-11/12 mx-auto">{mainheading}</h1>
 
       {/* First Section */}
       <div className="md:grid flex flex-col-reverse md:grid-cols-2 md:py-10 py-5 gap-10 w-10/12 mx-auto">
         <div className="place-content-center">
-          <h2 className="md:text-2xl font-bold mb-5">{headin1}</h2>
+          <h2 className="md:text-2xl text-black font-bold mb-5">{headin1}</h2>
           <div className="text-gray-700 md:text-base text-xs space-y-4">
             {descriptions1.map((text, i) => (
               <p key={i}>{text}</p>
