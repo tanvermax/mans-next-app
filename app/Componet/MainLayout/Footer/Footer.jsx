@@ -6,10 +6,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 
-export const metadata={
-    title: `Mans Packaging BD`,
-    description: 'Packaging is the science, art, and technology of enclosing or protecting products for distribution, storage, sale, and use - Mans Packaging BD',
-}
+
+
 const Footer = () => {
     return (
         <div>
