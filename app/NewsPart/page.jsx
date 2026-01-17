@@ -1,41 +1,32 @@
-// app/NewsPart/page.js
 import Link from "next/link";
 import Image from "next/image";
-import axios from 'axios'; // Import axios
 
-export const metadata = {
-  title: "News & Blogs | MANS Pack",
-  description: "Stay updated with the latest news and blogs from MANS Pack",
-};
+// NO "use client" here
+// NO useState or useEffect
 
 export default async function NewsPage() {
-  let newsList = [];
+  // 1. Fetch data directly on the server
+  const response = await fetch("https://mans-server.vercel.app/newspost", {
+    next: { revalidate: 3600 } // Refresh data every hour
+  });
+  const data = await response.json();
 
-  try {
-    const response = await axios.get("https://mans-server.vercel.app/newspost");
-    newsList = response.data;
-  } catch (error) {
-    console.error("Failed to fetch news:", error);
-    // You can handle the error more gracefully here, e.g., show a user-friendly message
-  }
-
+  const featuredArticle = data && data.length > 0 ? data[0] : null;
+  console.log(data)
   const formatDate = (dateString) => {
     return new Date(dateString).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
+      year: 'numeric', month: 'long', day: 'numeric'
     });
   };
 
-  // Function to estimate reading time
   const getReadingTime = (text) => {
     if (!text) return '2 min read';
     const wordsPerMinute = 200;
     const wordCount = text.split(/\s+/).length;
-    const readingTime = Math.ceil(wordCount / wordsPerMinute);
-    return `${readingTime} min read`;
+    return `${Math.ceil(wordCount / wordsPerMinute)} min read`;
   };
 
+  // 2. The rest of your JSX stays the same...
   return (
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -50,18 +41,21 @@ export default async function NewsPage() {
         </div>
 
         {/* Featured Article (first article gets special treatment) */}
-        {newsList.length > 0 && (
+        {data.length > 0 && (
           <div className="mb-16">
             <div className="bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl">
-              <Link href={`/NewsPart/${newsList[0].slug}`} className="block md:flex">
+              <Link href={`/NewsPart/${data[0].slug}`} className="block md:flex">
                 <div className="md:w-1/2 relative h-80 md:h-auto">
-                  <Image
-                    src={newsList[0].photoUrl}
-                    alt={newsList[0].headline}
-                    fill
-                    className="object-cover"
-                    priority
-                  />
+                  {featuredArticle && featuredArticle.photoUrl ? (
+                    <Image
+                      src={featuredArticle.photoUrl}
+                      alt={featuredArticle.headline || "Packaging News"}
+                      fill
+                      priority // This is safe now because we checked photoUrl
+                    />
+                  ) : (
+                    <div className="bg-gray-200 w-full h-full" /> // Fallback if image is missing
+                  )}
                   <div className="absolute top-4 left-4">
                     <span className="bg-indigo-600 text-white text-sm font-medium px-3 py-1 rounded-full">
                       Featured
@@ -71,19 +65,19 @@ export default async function NewsPage() {
                 <div className="md:w-1/2 p-8 flex flex-col justify-center">
                   <div className="flex items-center text-sm text-gray-500 mb-4">
                     <span className="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded mr-3">
-                      {newsList[0].category || "News"}
+                      {data[0].category || "News"}
                     </span>
-                    <time dateTime={newsList[0].createdAt}>
-                      {formatDate(newsList[0].createdAt)}
+                    <time dateTime={data[0].createdAt}>
+                      {formatDate(data[0].createdAt)}
                     </time>
                     <span className="mx-2">•</span>
-                    <span>{getReadingTime(newsList[0].description)}</span>
+                    <span>{getReadingTime(data[0].description)}</span>
                   </div>
                   <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 hover:text-indigo-600 transition-colors">
-                    {newsList[0].headline}
+                    {data[0].headline}
                   </h2>
                   <p className="text-gray-600 mb-6 line-clamp-3">
-                    {newsList[0].description}
+                    {data[0].description}
                   </p>
                   <div className="flex items-center">
                     <div className="w-10 h-10 bg-indigo-100 rounded-full flex items-center justify-center mr-3">
@@ -99,16 +93,20 @@ export default async function NewsPage() {
 
         {/* News Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {newsList.slice(1).map((news) => (
+          {data.slice(1).map((news) => (
             <article key={news._id} className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 group">
               <Link href={`/NewsPart/${news.slug}`}>
                 <div className="relative h-48 overflow-hidden">
-                  <Image
-                    src={news.photoUrl}
-                    alt={news.headline}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
+                  {featuredArticle && featuredArticle.photoUrl ? (
+                    <Image
+                      src={featuredArticle.photoUrl}
+                      alt={featuredArticle.headline || "Packaging News"}
+                      fill
+                      priority // This is safe now because we checked photoUrl
+                    />
+                  ) : (
+                    <div className="bg-gray-200 w-full h-full" /> // Fallback if image is missing
+                  )}
                   <div className="absolute top-4 left-4">
                     <span className="bg-indigo-600 text-white text-xs font-medium px-2 py-1 rounded">
                       {news.category || "News"}
@@ -149,8 +147,8 @@ export default async function NewsPage() {
             </article>
           ))}
         </div>
-        
-        {newsList.length === 0 && (
+
+        {data.length === 0 && (
           <div className="text-center py-16">
             <div className="mx-auto w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center mb-6">
               <svg className="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -169,9 +167,9 @@ export default async function NewsPage() {
             Subscribe to our newsletter to receive the latest news and updates directly in your inbox.
           </p>
           <div className="flex flex-col sm:flex-row max-w-md mx-auto gap-3">
-            <input 
-              type="email" 
-              placeholder="Your email address" 
+            <input
+              type="email"
+              placeholder="Your email address"
               className="flex-grow px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-white"
             />
             <button className="bg-white text-indigo-600 font-semibold px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors">

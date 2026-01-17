@@ -76,15 +76,15 @@ const Banner = () => {
               />
 
               {/* Gradient overlay for better text visibility */}
-              <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/40" />
+              <div className="absolute inset-0 bg-linear-to-r from-black/70 to-black/40" />
 
               {/* Content container */}
               <div className="absolute inset-0 flex flex-col items-center justify-center text-white p-4 md:p-8">
                 <div className="text-center max-w-4xl mx-auto space-y-4 md:space-y-6">
-                  <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold drop-shadow-lg animate-fade-in">
+                  <h1 className="text-xl md:text-5xl lg:text-6xl font-bold drop-shadow-lg animate-fade-in">
                     {slide.heading}
                   </h1>
-                  <p className="text-lg md:text-xl lg:text-2xl max-w-2xl mx-auto drop-shadow-md animate-fade-in-delayed">
+                  <p className="text-sm md:text-xl lg:text-2xl max-w-2xl mx-auto drop-shadow-md animate-fade-in-delayed">
                     {slide.description}
                   </p>
 
@@ -92,7 +92,7 @@ const Banner = () => {
                   <div className="pt-4 animate-fade-in-more-delayed">
                     <a
                       href={slide.ctaLink || "#"}
-                      className="inline-block bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
+                      className="inline-block bg-blue-600 hover:bg-blue-700 text-white text-xs md:text-base font-semibold md:py-3 py-1 px-2 md:px-8 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
                       aria-label={`Learn more about ${slide.heading}`}
                     >
                       {slide.ctaText || "Learn More"}

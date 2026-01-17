@@ -67,7 +67,7 @@ const Navbar = () => {
           >
             {item.label}
             {!isMobile && (
-              <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-blue-600 group-hover:w-full transition-all duration-300"></span>
+              <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
             )}
           </Link>
         </li>
@@ -75,8 +75,8 @@ const Navbar = () => {
     });
 
   return (
-    <nav className="container mx-auto sticky top-0 z-50 bg-white/70 backdrop-blur-md ">
-      <div className=" mx-auto flex items-center justify-between py-3 px-4 lg:px-0">
+    <nav className=" sticky top-0 z-50 bg-white/70 backdrop-blur-md ">
+      <div className="md:w-295 mx-auto flex items-center justify-between py-3 px-4 lg:px-0">
         {/* Logo */}
         <Link href="/" className="flex items-center">
           <Image src={logo} alt="Logo" className="w-32 md:w-44 lg:w-56" priority />

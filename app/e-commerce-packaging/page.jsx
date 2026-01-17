@@ -5,6 +5,7 @@ import Image from "next/image";
 import photo from "../assets/ecommerce-packaging.jpg";
 import photo1 from "../assets/ecommerce-packaging-solution.png";
 import Faq from "../Componet/Faq/Faq";
+import Hook1 from "../hook/Hook1";
 
 export const metadata = {
   title: 'E-Commerce Packaging | Mans Packaging',
@@ -14,47 +15,41 @@ export const metadata = {
 const Ecom = () => {
   return (
     <div className="py-10">
-
-
-      <h1 className="md:text-3xl text-xs font-bold w-11/12 mx-auto">
+      <h1 className="md:text-3xl text-black text-xs font-bold w-11/12 mx-auto">
         E-COMMERCE PACKAGING | CUSTOM SHIPPING CARTON BOXES
       </h1>
-
-      {/* First Section */}
-      <div className="md:grid flex flex-col-reverse md:grid-cols-2 md:py-10 py-5 gap-10 w-10/12 mx-auto">
-        <div className="place-content-center">
-          <h2 className="md:text-2xl font-bold mb-5">Scale. Savings. Sustainability.</h2>
-          <p className="text-gray-700 md:text-base text-xs">
-            We offer a wide range of custom e-commerce packaging solutions
+     <Hook1
+        photo="https://manspackaging.com/assets/industrial-packaging-boxes-1024x759-B0J7ZMCo.jpg"
+        photo2="https://manspackaging.com/assets/industrial-packaging-boxes-1024x759-B0J7ZMCo.jpg"
+        mainheading="Garments Packaging Boxes And Solutions"
+        headin1="Scale. Savings. Sustainability."
+        headin2="E-COMMERCE PACKAGING | CUSTOM SHIPPING CARTON BOXES" // Optional: can leave empty or add a second heading if needed
+        descriptions1={[
+          ` We offer a wide range of custom e-commerce packaging solutions
             that are designed to not only protect your products during
             transit, but also to create a memorable unboxing experience
             for the customers. From custom printed boxes and bags, to
             inserts and packaging accessories, we have everything you
-            need to take your ecommerce business to the next level.
-            <br />
-            <br />
-            Our team of experts will work closely with you to create a
+            need to take your ecommerce business to the next level.`,
+          `Our team of experts will work closely with you to create a
             packaging solution that perfectly matches your brand identity,
             while also meeting your specific needs and budget. Whether you
             need packaging for a one-time event, or a recurring order, we
             have the flexibility to meet your needs.
-            <br />
-            <br />
+            `,,
+        ]}
+        descriptions2={[`
             At Mans Printing and Packaging, we understand the importance of
             sustainability in ecommerce packaging. That’s why we offer
             eco-friendly options that not only reduce your environmental
             impact, but also help to differentiate your brand and promote a
-            positive image.
-          </p>
-        </div>
-        <div>
-          <Image
-            src={photo}
-            alt="E-commerce Packaging"
-            className="rounded-b-full lg:p-20"
-          />
-        </div>
-      </div>
+            positive image.`]} // Optional: empty array if no second section content
+      />
+
+
+      
+
+     
 
       {/* Second Section */}
       <div className="bg-gray-100">
