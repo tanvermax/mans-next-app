@@ -75,8 +75,8 @@ const Navbar = () => {
     });
 
   return (
-    <nav className="sticky top-0 z-50 bg-white/70 backdrop-blur-md ">
-      <div className="container mx-auto flex items-center justify-between py-3 px-4 lg:px-0">
+    <nav className="container mx-auto sticky top-0 z-50 bg-white/70 backdrop-blur-md ">
+      <div className=" mx-auto flex items-center justify-between py-3 px-4 lg:px-0">
         {/* Logo */}
         <Link href="/" className="flex items-center">
           <Image src={logo} alt="Logo" className="w-32 md:w-44 lg:w-56" priority />

@@ -45,7 +45,7 @@ export default async function RootLayout({ children }) {
           })(window,document,'script','dataLayer','GTM-NFJSN3JD');`}
         </Script>
       </head>
-      <body suppressHydrationWarning className={`${montserrat.className} antialiased`}>
+      <body  suppressHydrationWarning className={`${montserrat.className} antialiased `}>
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-NFJSN3JD"
@@ -100,11 +100,8 @@ export default async function RootLayout({ children }) {
             </div>
           </div>
         </div>
-        <header className="sticky top-0 z-50 bg-white">
-          <div className="max-w-7xl mx-auto">
-          </div>
-        </header>
-        <main className="min-h-screen bg-linear-to-b from-gray-50 to-white">
+        
+        <main className="min-h-screen  bg-linear-to-b from-gray-50 to-white">
           <ToastContainer />
           <Navbar />
           {children}
