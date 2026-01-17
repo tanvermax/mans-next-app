@@ -5,6 +5,11 @@ import photo1 from "../../../assets/MansPackaging2.png";
 import Link from 'next/link';
 import Image from 'next/image';
 
+
+export const metadata={
+    
+    description: ' Mans Packaging is a paper-based packaging manufacturing company in Bangladesh. We provide packaging service for Food, Cosmetics, Ecommerce, Jewelry, Ceramics, Glassware’s, Pharmaceuticals, Bakery & Pastry, Agriculture & more.',
+}
 const Footer = () => {
     return (
         <div>
@@ -89,9 +94,9 @@ const Footer = () => {
                     </div>
 
                     {/* Useful Links */}
-                    <div className="lg:col-span-3 px-5 text-center lg:text-left mt-8 lg:mt-0 lg:border-l">
-                        <p className="font-semibold text-white mb-4">USEFUL LINKS</p>
-                        <ul className="flex flex-col gap-3 text-sm text-gray-400">
+                    <div className=" lg:col-span-3 px-5 text-center lg:text-left mt-8 lg:mt-0 lg:border-l">
+                        <p className="font-semibold text-center text-white mb-4">USEFUL LINKS</p>
+                        <ul className=" text-center flex flex-col gap-3 text-sm text-gray-400">
                             <li><a href="#" className="hover:text-white">Terms of Service</a></li>
                             <li><a href="#" className="hover:text-white">Privacy Policy</a></li>
                             <li><a href="#" className="hover:text-white">Security</a></li>
