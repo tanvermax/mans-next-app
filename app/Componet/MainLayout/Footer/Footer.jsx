@@ -7,8 +7,8 @@ import Image from 'next/image';
 
 
 export const metadata={
-    
-    description: ' Mans Packaging is a paper-based packaging manufacturing company in Bangladesh. We provide packaging service for Food, Cosmetics, Ecommerce, Jewelry, Ceramics, Glassware’s, Pharmaceuticals, Bakery & Pastry, Agriculture & more.',
+    title: `Mans Packaging BD`,
+    description: 'Packaging is the science, art, and technology of enclosing or protecting products for distribution, storage, sale, and use - Mans Packaging BD',
 }
 const Footer = () => {
     return (
