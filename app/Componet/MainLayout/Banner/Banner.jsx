@@ -7,7 +7,7 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import Image from "next/image";
-import Loading from "../../Element/Loading";
+import BannerSkeleton from "./BannerSkeleton";
 import axios from "axios";
 
 const Banner = () => {
@@ -17,15 +17,22 @@ const Banner = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      setLoading(false)
-      const res = await axios.get("https://mans-server.vercel.app/banner");
-      setSlides(res.data || []);
+      try {
+        const res = await axios.get("https://mans-server.vercel.app/banner");
+        setSlides(res.data || []);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false); // Set to false AFTER data arrives
+      }
     };
     fetchData();
-  }, [setSlides]);
-  
+  }, []);
 
-  if (loading) return <Loading />;
+
+  if (loading) {
+    return <BannerSkeleton />
+  }
 
   return (
     <section aria-label="Featured Services Banner" className="w-full mx-auto relative">
