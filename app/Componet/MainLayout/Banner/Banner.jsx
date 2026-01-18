@@ -35,7 +35,7 @@ const Banner = () => {
   }
 
   return (
-    <section aria-label="Featured Services Banner" className="w-full mx-auto relative">
+    <section aria-label="Featured Services Banner" className="w-full mx-auto relative animate-fade-in-smooth">
       <Swiper
         spaceBetween={0}
         centeredSlides={true}
