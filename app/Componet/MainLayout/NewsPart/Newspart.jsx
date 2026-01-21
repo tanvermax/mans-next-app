@@ -145,7 +145,7 @@ const Newspart = () => {
 
   return (
     <section className="md:py-24 py-10 overflow-x-hidden bg-gray-50">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto container px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
           <h2 className="font-manrope text-2xl lg:text-4xl font-bold text-gray-900 mb-4">
             Our Popular Blogs
@@ -198,7 +198,7 @@ const Newspart = () => {
                           {/* <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-300"></div> */}
                         </Link>
 
-                        <div className="md:w-3/5 p-6">
+                        <div className="md:w-3/5 p-6 flex flex-col justify-between">
                           <div className="flex items-center mb-3">
                             <span className="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded">
                               {news.category || "General"}
@@ -208,7 +208,8 @@ const Newspart = () => {
                             </span>
                           </div>
 
-                          <Link href={`/NewsPart/${news.slug || news._id}`}>
+                          <div className="mb-6">
+                            <Link href={`/NewsPart/${news.slug || news._id}`}>
                             <h3 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2 hover:text-indigo-600 transition-colors">
                               {news.headline}
                             </h3>
@@ -217,6 +218,7 @@ const Newspart = () => {
                           <p className="text-gray-600 mb-4 line-clamp-3">
                             {news.description}
                           </p>
+                          </div>
 
                           <div className="flex items-center justify-between">
                             <div className="flex items-center">
