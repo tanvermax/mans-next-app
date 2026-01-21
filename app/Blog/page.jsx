@@ -26,6 +26,8 @@ export default async function NewsPage() {
     return `${Math.ceil(wordCount / wordsPerMinute)} min read`;
   };
 
+  console.log(data)
+
   // 2. The rest of your JSX stays the same...
   return (
     <div className="min-h-screen bg-gray-50 py-8">
@@ -44,7 +46,7 @@ export default async function NewsPage() {
         {data.length > 0 && (
           <div className="mb-16">
             <div className="bg-white rounded-2xl shadow-lg overflow-hidden transition-all duration-300 hover:shadow-xl">
-              <Link href={`/NewsPart/${data[0].slug}`} className="block md:flex">
+              <Link href={`/Blog/${data[0].slug}`} className="block md:flex">
                 <div className="md:w-1/2 relative h-80 md:h-auto">
                   {featuredArticle && featuredArticle.photoUrl ? (
                     <Image
@@ -95,24 +97,24 @@ export default async function NewsPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {data.slice(1).map((news) => (
             <article key={news._id} className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 group">
-              <Link href={`/NewsPart/${news.slug}`}>
+              <Link href={`/Blog/${news.slug}`}>
                 <div className="relative h-48 overflow-hidden">
-                  {featuredArticle && featuredArticle.photoUrl ? (
+                  {news.photoUrl ? (
                     <Image
-                      src={featuredArticle.photoUrl}
-                      alt={featuredArticle.headline || "Packaging News"}
+                      src={news.photoUrl}
+                      alt={news.headline || "Packaging News"}
                       fill
-                      priority // This is safe now because we checked photoUrl
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                   ) : (
-                    <div className="bg-gray-200 w-full h-full" /> // Fallback if image is missing
+                    <div className="bg-gray-200 w-full h-full" />
                   )}
                   <div className="absolute top-4 left-4">
                     <span className="bg-indigo-600 text-white text-xs font-medium px-2 py-1 rounded">
                       {news.category || "News"}
                     </span>
                   </div>
-                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-300"></div>
+                  <div className="absolute inset-0 bg-opacity-0 group-hover:bg-opacity-10 transition-all duration-300"></div>
                 </div>
                 <div className="p-6">
                   <div className="flex items-center text-xs text-gray-500 mb-3">

@@ -6,7 +6,9 @@ import Link from "next/link";
 
 export async function generateMetadata({ params }) {
   try {
-    const response = await axios.get(`https://mans-server.vercel.app/newspost/${params.slug}`);
+    const { slug } = await params;
+
+    const response = await axios.get(`https://mans-server.vercel.app/newspost/${slug}`);
     const news = response.data;
 
     if (!news) {
@@ -41,10 +43,11 @@ export async function generateMetadata({ params }) {
 }
 
 export default async function NewsArticle({ params }) {
+  const { slug } = await params; 
   let news = null;
   
   try {
-    const response = await axios.get(`https://mans-server.vercel.app/newspost/${params.slug}`);
+    const response = await axios.get(`https://mans-server.vercel.app/newspost/${slug}`);
     news = response.data;
   } catch (error) {
     console.error("Failed to fetch news article:", error);
@@ -86,7 +89,7 @@ export default async function NewsArticle({ params }) {
               </svg>
             </li>
             <li className="flex items-center">
-              <Link href="/NewsPart" className="hover:text-indigo-600 transition-colors">News</Link>
+              <Link href="/Blog" className="hover:text-indigo-600 transition-colors">News</Link>
               <svg className="fill-current w-3 h-3 mx-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
                 <path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/>
               </svg>
@@ -197,7 +200,7 @@ export default async function NewsArticle({ params }) {
         
         {/* Back button */}
         <div className="mt-8 text-center">
-          <Link href="/NewsPart" className="inline-flex
+          <Link href="/Blog" className="inline-flex
            items-center text-indigo-600
             hover:text-indigo-800 font-medium
              transition-colors group">

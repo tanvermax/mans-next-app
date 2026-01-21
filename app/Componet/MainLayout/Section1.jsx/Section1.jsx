@@ -79,3 +79,9 @@ export default function Section1() {
     </section>
   );
 }
+
+
+// description inoput 1500
+// blog image
+// blog link set newPart - from blog
+// minhaz image

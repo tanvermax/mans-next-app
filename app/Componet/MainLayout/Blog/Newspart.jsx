@@ -21,7 +21,7 @@ const Newspart = () => {
     const fetchData = async () => {
       const res = await axios.get("https://mans-server.vercel.app/newspost");
       if(res){setLoading(false);}
-      setData(res.data || []);
+      setData([...res.data].reverse() || []);
     };
     fetchData();
   }, [setData]);
@@ -183,7 +183,7 @@ const Newspart = () => {
                     <div className="group bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm transition-all duration-300 hover:shadow-md hover:border-indigo-600">
                       <div className="md:flex">
                         <Link
-                          href={`/NewsPart/${news.slug || news._id}`}
+                          href={`/Blog/${news.slug || news._id}`}
                           className="block md:w-2/5 relative overflow-hidden"
                         >
                           <Image
@@ -209,7 +209,7 @@ const Newspart = () => {
                           </div>
 
                           <div className="mb-6">
-                            <Link href={`/NewsPart/${news.slug || news._id}`}>
+                            <Link href={`/Blog/${news.slug || news._id}`}>
                             <h3 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2 hover:text-indigo-600 transition-colors">
                               {news.headline}
                             </h3>
@@ -228,7 +228,7 @@ const Newspart = () => {
                               <span className="text-sm text-gray-700">MANS Pack C.</span>
                             </div>
                             <Link
-                              href={`/NewsPart/${news.slug || news._id}`}
+                              href={`/Blog/${news.slug || news._id}`}
                               className="text-indigo-600 hover:text-indigo-800 font-medium text-sm flex items-center"
                             >
                               Read more
@@ -283,7 +283,7 @@ const Newspart = () => {
             </div>
 
             <Link
-              href="/NewsPart"
+              href="/Blog"
               className="text-base border border-gray-300 shadow-sm rounded-full py-3.5 px-2 w-52 flex justify-center items-center text-gray-900 font-semibold mx-auto transition-all duration-300 hover:bg-gray-100 hover:shadow-md"
             >
               View All Articles

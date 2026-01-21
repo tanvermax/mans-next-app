@@ -1,5 +1,5 @@
 import React from 'react'
-import NewsPage from '../NewsPart/page'
+import NewsPage from '../Blog/page'
 
 export const metadata = {
     title: 'Knowledge panel | Mans Packaging',
