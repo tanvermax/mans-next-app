@@ -21,7 +21,7 @@ const Newspart = () => {
     const fetchData = async () => {
       const res = await axios.get("https://mans-server.vercel.app/newspost");
       if(res){setLoading(false);}
-      setData([...res.data].reverse() || []);
+      setData(res.data);
     };
     fetchData();
   }, [setData]);
