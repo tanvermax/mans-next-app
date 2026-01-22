@@ -147,10 +147,10 @@ const Newspart = () => {
     <section className="md:py-24 py-10 overflow-x-hidden bg-gray-50">
       <div className="mx-auto container px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-14">
-          <h2 className="font-manrope text-2xl lg:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="font-manrope text-xl lg:text-4xl font-bold text-gray-900 mb-4">
             Our Popular Blogs
           </h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-gray-600 max-w-2xl text-xs  md:text-base mx-auto">
             Discover the latest insights, trends, and stories from our team of experts
           </p>
         </div>
@@ -191,7 +191,7 @@ const Newspart = () => {
                             alt={news.headline}
                             width={300}
                             height={400}
-                            className="rounded-l-2xl md:w-full md:h-[50vh]   object-cover transition-transform duration-500 group-hover:scale-105"
+                            className="rounded-l-2xl md:w-full h-[30vh] md:h-[50vh]   object-cover transition-transform duration-500 group-hover:scale-105"
                             priority={false}
                             quality={75}
                           />
@@ -203,19 +203,19 @@ const Newspart = () => {
                             <span className="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded">
                               {news.category || "General"}
                             </span>
-                            <span className="text-sm text-gray-500 ml-3">
+                            <span className="md:text-sm text-xs text-gray-500 ml-3">
                               {formatDate(news.createdAt)}
                             </span>
                           </div>
 
                           <div className="mb-6">
                             <Link href={`/Blog/${news.slug || news._id}`}>
-                            <h3 className="text-xl font-bold text-gray-900 mb-3 line-clamp-2 hover:text-indigo-600 transition-colors">
+                            <h3 className="md:text-xl text-md font-bold text-gray-900 mb-3 line-clamp-2 hover:text-indigo-600 transition-colors">
                               {news.headline}
                             </h3>
                           </Link>
 
-                          <p className="text-gray-600 mb-4 line-clamp-3">
+                          <p className="text-gray-600 mb-4 md:text-base text-xs line-clamp-3">
                             {news.description}
                           </p>
                           </div>
@@ -223,13 +223,13 @@ const Newspart = () => {
                           <div className="flex items-center justify-between">
                             <div className="flex items-center">
                               <div className="w-8 h-8 bg-indigo-100 rounded-full flex items-center justify-center mr-2">
-                                <span className="text-indigo-800 font-medium text-sm">MP</span>
+                                <span className="text-indigo-800 font-medium md:text-sm text-xs">MP</span>
                               </div>
-                              <span className="text-sm text-gray-700">MANS Pack C.</span>
+                              <span className="md:text-sm text-xs text-gray-700">MANS Pack C.</span>
                             </div>
                             <Link
                               href={`/Blog/${news.slug || news._id}`}
-                              className="text-indigo-600 hover:text-indigo-800 font-medium text-sm flex items-center"
+                              className="text-indigo-600 hover:text-indigo-800 font-medium md:text-sm text-[10px] flex items-center"
                             >
                               Read more
                               <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

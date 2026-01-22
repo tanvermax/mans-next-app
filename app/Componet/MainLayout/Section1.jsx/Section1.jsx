@@ -45,16 +45,16 @@ export default function Section1() {
     "description": "Wholesale cardboard boxes, custom design, and eco-friendly packaging materials."
   };
   return (
-    <section className="container mx-auto py-12 lg:py-20" aria-labelledby="features-heading">
+    <section className="container md:px-0 px-5 mx-auto py-12 lg:py-20" aria-labelledby="features-heading">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
       />
       <header className="text-center mb-10">
-        <h2 id="features-heading" className="text-2xl lg:text-4xl font-bold text-gray-800">
+        <h2 id="features-heading" className="text-xl lg:text-4xl font-bold text-gray-800">
             Why Choose MANS Packaging for Custom Boxes?
         </h2>
-        <p className="mt-3 text-gray-600 max-w-2xl mx-auto text-sm lg:text-base">
+        <p className="mt-3 text-gray-600 max-w-2xl mx-auto text-xs lg:text-base">
           We provide <strong>customized, durable, and cost-effective packaging solutions</strong> designed to fit your business needs, from <strong>custom cardboard boxes</strong> to <strong>bulk shipping supplies in Dhaka</strong>.
         </p>
       </header>

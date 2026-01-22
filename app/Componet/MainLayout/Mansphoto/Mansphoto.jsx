@@ -24,7 +24,7 @@ const Mansphoto = () => {
   
 
   return (
-    <section id="about-us" className="lg:flex lg:py-20 py-10 container mx-auto items-center">
+    <section id="about-us" className="lg:flex lg:py-20 py-10 md:px-0 px-5 container mx-auto items-center">
       
       {/* Left: Images (Animated) */}
       <div className="lg:w-1/2 grid grid-cols-2 gap-3 lg:gap-6 lg:p-10">

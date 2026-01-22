@@ -98,12 +98,12 @@ const Amessage = () => {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="hidden lg:block absolute bottom-0 left-0 lg:left-8 w-full max-w-[580px] pointer-events-none"
+          className="hidden lg:block absolute bottom-0 left-0 lg:left-3 w-full max-w-[650px] pointer-events-none"
         >
           <Image
             src={photo}
             alt="Minhazur Rahman CEO of MANS Packaging"
-            className="w-full h-auto lg:h-[70vh] drop-shadow-[0_20px_20px_rgba(0,0,0,0.3)]"
+            className="w-full h-auto  lg:h-[70vh] drop-shadow-[0_20px_20px_rgba(0,0,0,0.3)]"
             width={600}
             height={800}
             priority

@@ -42,7 +42,7 @@ const StatsSection = () => {
             {stat.icon}
             <div className="lg:text-2xl font-bold">
               {inView ? (
-                <CountUp end={stat.number} duration={3} suffix={stat.suffix} />
+                <CountUp end={stat.number} duration={2} suffix={stat.suffix} />
               ) : (
                 `0${stat.suffix}`
               )}
