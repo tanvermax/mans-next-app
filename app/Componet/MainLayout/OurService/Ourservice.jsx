@@ -49,7 +49,7 @@ const Ourservice = () => {
 
   if (loading) {
     return (
-      <section className="bg-linear-to-b from-gray-50 to-gray-100 py-16" aria-label="Our services loading">
+      <section className="bg-linear-to-b from-gray-50 to-gray-100 md:py-16" aria-label="Our services loading">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <div className="h-10 bg-gray-200 rounded w-48 mx-auto mb-4"></div>
@@ -75,18 +75,18 @@ const Ourservice = () => {
         {/* SEO-optimized heading structure */}
         <header className="text-center mb-12">
           <motion.h2
-            initial={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-4xl md:text-5xl font-bold text-gray-900 mb-4"
+            transition={{ duration: 0.2 }}
+            className="text-xl md:text-4xl font-bold text-gray-900 mb-4"
           >
             Our Premium Services
           </motion.h2>
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-            className="text-lg md:text-base text-gray-700 max-w-2xl mx-auto"
+            transition={{ delay: 0.3, duration: 0.2 }}
+            className="text-xs md:text-base text-gray-700 max-w-2xl mx-auto"
           >
             Discover our comprehensive range of packaging solutions designed to meet your unique needs
           </motion.p>
@@ -104,32 +104,26 @@ const Ourservice = () => {
               key={index}
               variants={itemVariants}
               whileHover={{
-                scale: 1.05,
+                scale: 1.1,
                 boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)"
               }}
               className="bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-300 hover:shadow-xl group"
             >
-              <div className="relative h-60 overflow-hidden">
+              <div className="relative items-center mx-auto md:h-[40vh]  h-[20vh] md:w-full w-[50vw] overflow-hidden">
                 <Image
                   src={service.service}
                   alt={service.heading || "Service Image"}
                   fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-500"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                  className="object-cover md:p-5  group-hover:scale-110 transition-transform duration-500"
+                  sizes="(max-width: 768px) 80vw, (max-width: 1200px) 50vw, 25vw"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                  <div className="p-4 text-white">
-                    <button className="text-sm font-semibold bg-white text-gray-900 px-3 py-1 rounded-full hover:bg-gray-100 transition-colors">
-                      Learn more
-                    </button>
-                  </div>
-                </div>
+                
               </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">
+              <div className="md:p-6 p-3">
+                <h3 className="md:text-xl text-md font-semibold text-gray-900 mb-3 group-hover:text-[#25A6E2] transition-colors">
                   {service.heading}
                 </h3>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-600  text-xs md:text-base leading-relaxed">
                   {service.description}
                 </p>
               </div>
@@ -145,9 +139,9 @@ const Ourservice = () => {
           className="text-center mt-16"
         >
           <p className="text-gray-700 mb-6">Ready to elevate your packaging experience?</p>
-          {/* <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl"> */}
+          {/* <button className="bg-[#25A6E2] hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl"> */}
             {/* contact-us */}
-            <Link className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl" href="/contact-us">Contact Us Today</Link>
+            <Link className="bg-[#25A6E2] hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 transform hover:-translate-y-1 shadow-lg hover:shadow-xl" href="/contact-us">Contact Us Today</Link>
           {/* </button> */}
         </motion.div>
       </div>

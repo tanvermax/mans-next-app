@@ -33,9 +33,9 @@ const Ourclient = () => {
           id="our-clients-title"
           className="lg:text-5xl md:text-4xl text-2xl font-extrabold tracking-tight text-gray-900"
         >
-          Our <span className="text-blue-600">Clients</span>
+          Our <span className="text-[#25A6E2]">Clients</span>
         </h2>
-        <p className="mt-3 lg:text-lg text-sm text-gray-600">
+        <p className="mt-3 lg:text-lg text-xs text-gray-600">
           Trusted by leading brands and businesses
         </p>
       </div>

@@ -72,7 +72,7 @@ const Technology = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.7 }}
             >
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">{technologyData.main.title}</h1>
+              <h1 className="text-4xl md:text-4xl font-bold mb-6">{technologyData.main.title}</h1>
               <p className="text-xl mb-8 opacity-90">{technologyData.main.description}</p>
               <button className="bg-white text-blue-700 font-semibold py-3 px-8 rounded-lg hover:bg-blue-50 transition-colors duration-300">
                 Request a Technology Demo
@@ -218,7 +218,7 @@ const Technology = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
+      <section className="py-16 bg-gradient-to-r from-[#25A6E2] to-blue-800 text-white">
         <div className="container mx-auto px-4 text-center">
           <motion.h2 
             className="text-3xl md:text-4xl font-bold mb-6"

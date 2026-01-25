@@ -29,7 +29,7 @@ const HomePortfolio = () => {
       {/* Heading */}
       <div>
         <h2 className="lg:text-5xl md:text-4xl text-2xl font-extrabold tracking-tight text-gray-900">
-          Our <span className="text-blue-600">Portfolio</span>
+          Our <span className="text-[#25A6E2]">Portfolio</span>
         </h2>
         <p className="mt-4 lg:text-lg text-sm text-gray-600">
           A showcase of the projects we’ve successfully delivered
@@ -63,7 +63,7 @@ const HomePortfolio = () => {
 
       </div>
      
-        <Link className=" md:w-[10%] mx-auto  bg-blue-600 text-white p-3 rounded-full font-semibold " href={"/portfolio"} >View more</Link>
+        <Link className=" md:w-[10%] mx-auto  bg-[#25A6E2] text-white p-3 rounded-full font-semibold " href={"/portfolio"} >View more</Link>
 
 
     </section>

@@ -96,7 +96,7 @@ const Contact = () => {
 
                         {/* Right Section */}
                         <div className="bg-gray-50 p-5 lg:p-11 lg:rounded-r-2xl rounded-2xl">
-                            <h2 className="text-indigo-600 font-manrope text-4xl font-semibold leading-10 mb-11">
+                            <h2 className="text-[#25A6E2] font-manrope text-4xl font-semibold leading-10 mb-11">
                                 Send Us A Message
                             </h2>
                             <input
@@ -156,7 +156,7 @@ const Contact = () => {
                                 className="w-full h-12 text-gray-600 placeholder-gray-400 bg-transparent text-lg shadow-sm font-normal leading-7 rounded-full border border-gray-200 focus:outline-none pl-4 mb-10"
                                 placeholder="Message"
                             />
-                            <button className="w-full h-12 text-white text-base font-semibold leading-6 rounded-full transition-all duration-700 hover:bg-indigo-800 bg-indigo-600 shadow-sm">
+                            <button className="w-full h-12 text-white text-base font-semibold leading-6 rounded-full transition-all duration-700 hover:bg-indigo-800 bg-[#25A6E2] shadow-sm">
                                 Send
                             </button>
                         </div>

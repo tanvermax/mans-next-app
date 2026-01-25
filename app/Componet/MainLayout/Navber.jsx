@@ -39,7 +39,7 @@ const Navbar = () => {
         return (
           <li key={item.label} className={`relative group ${isMobile ? "" : "cursor-pointer"}`}>
             <span
-              className={`block px-4 py-2 text-black  text-[8px] md:text-base ${isMobile ? "hover:bg-gray-100 rounded" : "hover:text-blue-600 transition-colors duration-300"
+              className={`block px-4 py-2 text-black  text-[8px] md:text-base ${isMobile ? "hover:bg-gray-100 rounded" : "hover:text-[#25A6E2] transition-colors duration-300"
                 }`}
             >
               {item.label}
@@ -62,12 +62,12 @@ const Navbar = () => {
             href={item.href}
             className={`block px-4 text-black text-[8px] md:text-base md:w-full w-[100px] py-2 ${isMobile
               ? "hover:bg-gray-100 rounded"
-              : "relative group hover:text-blue-600 transition-colors duration-300"
+              : "relative group hover:text-[#25A6E2] transition-colors duration-300"
               }`}
           >
             {item.label}
             {!isMobile && (
-              <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
+              <span className="absolute left-0 -bottom-1 w-0 h-0.5 bg-[#25A6E2] group-hover:w-full transition-all duration-300"></span>
             )}
           </Link>
         </li>
@@ -75,7 +75,7 @@ const Navbar = () => {
     });
 
   return (
-    <nav className=" sticky top-0 z-50 bg-white/70 backdrop-blur-md ">
+    <nav className=" sticky lg:overflow-hidden top-0 z-50 bg-white/70 backdrop-blur-md ">
       <div className="md:w-295 mx-auto flex items-center justify-between py-3 px-4 lg:px-0">
         {/* Logo */}
         <Link href="/" className="flex items-center">
@@ -85,50 +85,19 @@ const Navbar = () => {
         {/* Desktop Menu */}
         <div className="hidden lg:flex">
           <ul className="flex items-center gap-8 text-gray-800 font-medium">
-            {renderNavItems(navItemsData)}
-            {/* {
-              userData ? <> {
-                userData.role === "admin" ? (
-                  <Link href={'/admindashbord'} className="px-4 py-2 text-teal-500">
-                    {session.user.image && (
-                    <Image
-                      src={session.user.image}
-                      alt={session.user.name || "User"}
-                      width={40}
-                      height={40}
-                      className="rounded-full"
-                    />
-                  )}</Link>
-                ) : (
-                  
-                  <Link href={'/'} className="px-4 py-2 text-teal-500">{session.user.image && (
-                    <Image
-                      src={session.user.image}
-                      alt={session.user.name || "User"}
-                      width={40}
-                      height={40}
-                      className="rounded-full"
-                    />
-                  )}</Link>
-                )
-              }</> : 
-              ""
-              // <Link href="/login" className="px-4 py-2">
-              //   Login
-              // </Link> ""
-            } */}
+            {renderNavItems(navItemsData)}        
 
           </ul>
         </div>
 
         {/* Mobile Menu */}
-        <div className="lg:hidden relative">
+        <div className="lg:hidden md:-left-[28vw]  relative">
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
             className="p-2 rounded-md hover:bg-gray-100 transition-all"
           >
             <svg
-              className="h-6 w-6 text-gray-800"
+              className="h-6 w-6 text-[#25A6E2]"
               fill="none"
               stroke="currentColor"
               strokeWidth="2"
@@ -143,37 +112,7 @@ const Navbar = () => {
               }`}
           >
             <ul className="flex  flex-col p-2">{renderNavItems(navItemsData, true)}</ul>
-            {/* <div className="p-2">
-              {
-              userData ? <> {
-                userData.role === "admin" ? (
-                  <Link href={'/admindashbord'} className="px-4 py-2 text-teal-500">
-                    {session.user.image && (
-                    <Image
-                      src={session.user.image}
-                      alt={session.user.name || "User"}
-                      width={40}
-                      height={40}
-                      className="rounded-full"
-                    />
-                  )}</Link>
-                ) : (
-                  
-                  <Link href={'/'} className="px-4 py-2 text-teal-500">{session.user.image && (
-                    <Image
-                      src={session.user.image}
-                      alt={session.user.name || "User"}
-                      width={40}
-                      height={40}
-                      className="rounded-full"
-                    />
-                  )}</Link>
-                )
-              }</> : <Link href="/login" className="px-4 py-2">
-                Login
-              </Link>
-            }
-            </div> */}
+            
           </div>
         </div>
       </div>

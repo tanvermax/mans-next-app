@@ -49,7 +49,7 @@ const Social = () => {
       <div className="flex justify-center mt-6">
         <button
           onClick={handlegooglein}
-          className="flex items-center gap-2 bg-white shadow-md px-6 py-2 rounded-xl border border-gray-200 hover:shadow-lg hover:border-blue-500 hover:text-blue-600 transition duration-200"
+          className="flex items-center gap-2 bg-white shadow-md px-6 py-2 rounded-xl border border-gray-200 hover:shadow-lg hover:border-blue-500 hover:text-[#25A6E2] transition duration-200"
         >
           <FaGoogle className="text-red-500 text-xl" />
           <span className="font-medium">Sign in with Google</span>

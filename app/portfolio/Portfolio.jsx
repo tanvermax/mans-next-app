@@ -51,7 +51,7 @@ function Portfolioo() {
                     <button
                         key={type}
                         className={`px-4 py-2 rounded text-[8px] ${filterType === type
-                            ? "bg-blue-600 text-white"
+                            ? "bg-[#25A6E2] text-white"
                             : "bg-gray-200 text-black"
                             } hover:bg-blue-500 hover:text-white transition m-1`}
                         onClick={() => setFilterType(type)}

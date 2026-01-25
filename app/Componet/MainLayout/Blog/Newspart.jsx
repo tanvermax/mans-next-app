@@ -180,7 +180,7 @@ const Newspart = () => {
                     key={news._id}
                     className="w-full flex-shrink-0 px-3"
                   >
-                    <div className="group bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm transition-all duration-300 hover:shadow-md hover:border-indigo-600">
+                    <div className="group bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm transition-all duration-300 hover:shadow-md hover:border-[#25A6E2]">
                       <div className="md:flex">
                         <Link
                           href={`/Blog/${news.slug || news._id}`}
@@ -200,7 +200,7 @@ const Newspart = () => {
 
                         <div className="md:w-3/5 p-6 flex flex-col justify-between">
                           <div className="flex items-center mb-3">
-                            <span className="bg-indigo-100 text-indigo-800 text-xs font-medium px-2.5 py-0.5 rounded">
+                            <span className="bg-indigo-100 text-[#25A6E2] text-xs font-medium px-2.5 py-0.5 rounded">
                               {news.category || "General"}
                             </span>
                             <span className="md:text-sm text-xs text-gray-500 ml-3">
@@ -210,7 +210,7 @@ const Newspart = () => {
 
                           <div className="mb-6">
                             <Link href={`/Blog/${news.slug || news._id}`}>
-                            <h3 className="md:text-xl text-md font-bold text-gray-900 mb-3 line-clamp-2 hover:text-indigo-600 transition-colors">
+                            <h3 className="md:text-xl text-md font-bold text-gray-900 mb-3 line-clamp-2 hover:text-[#25A6E2] transition-colors">
                               {news.headline}
                             </h3>
                           </Link>
@@ -229,7 +229,7 @@ const Newspart = () => {
                             </div>
                             <Link
                               href={`/Blog/${news.slug || news._id}`}
-                              className="text-indigo-600 hover:text-indigo-800 font-medium md:text-sm text-[10px] flex items-center"
+                              className="text-[#25A6E2] hover:text-indigo-800 font-medium md:text-sm text-[10px] flex items-center"
                             >
                               Read more
                               <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -274,7 +274,7 @@ const Newspart = () => {
                   <button
                     key={index}
                     onClick={() => goToSlide(index)}
-                    className={`w-2.5 h-2.5 rounded-full transition-all ${index === currentSlide ? "bg-indigo-600 w-6" : "bg-gray-300"
+                    className={`w-2.5 h-2.5 rounded-full transition-all ${index === currentSlide ? "bg-[#25A6E2] w-6" : "bg-gray-300"
                       }`}
                     aria-label={`Go to slide ${index + 1}`}
                   />

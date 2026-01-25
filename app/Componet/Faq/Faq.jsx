@@ -58,7 +58,7 @@ const Faq = () => {
           F.A.Q
         </p>
         <h3 className="text-xl sm:text-4xl leading-normal font-extrabold tracking-tight text-gray-900">
-          Frequently Asked <span className="text-indigo-600">Questions</span>
+          Frequently Asked <span className="text-[#25A6E2]">Questions</span>
         </h3>
       </div>
 
@@ -67,7 +67,7 @@ const Faq = () => {
           <div key={d.id} className="lg:p-2 md:w-[500px] mx-auto">
             {/* Question */}
             <div className="flex gap-5 py-5 place-items-center">
-              <FaQuestionCircle className="text-3xl text-blue-600" />
+              <FaQuestionCircle className="text-3xl text-[#25A6E2]" />
               <h2 className="bg-gray-100 p-3 text-black rounded-2xl font-bold md:text-base text-xs">
                 {d.question}
               </h2>

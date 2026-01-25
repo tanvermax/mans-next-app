@@ -264,7 +264,7 @@ export default FloatingChat;
 //                 />
 //                 <button
 //                   type="submit"
-//                   className="bg-blue-500 text-white px-4 py-2 rounded-r-lg hover:bg-blue-600 transition-colors flex items-center justify-center"
+//                   className="bg-blue-500 text-white px-4 py-2 rounded-r-lg hover:bg-[#25A6E2] transition-colors flex items-center justify-center"
 //                 >
 //                   <FaPaperPlane />
 //                 </button>

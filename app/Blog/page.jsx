@@ -34,7 +34,7 @@ export default async function NewsPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Hero Section */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+          <h1 className="text-4xl md:text-4xl font-bold text-gray-900 mb-4">
             Latest News & Blogs
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -59,7 +59,7 @@ export default async function NewsPage() {
                     <div className="bg-gray-200 w-full h-full" /> // Fallback if image is missing
                   )}
                   <div className="absolute top-4 left-4">
-                    <span className="bg-indigo-600 text-white text-sm font-medium px-3 py-1 rounded-full">
+                    <span className="bg-[#25A6E2] text-white text-sm font-medium px-3 py-1 rounded-full">
                       Featured
                     </span>
                   </div>
@@ -75,7 +75,7 @@ export default async function NewsPage() {
                     <span className="mx-2">•</span>
                     <span>{getReadingTime(data[0].description)}</span>
                   </div>
-                  <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 hover:text-indigo-600 transition-colors">
+                  <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 hover:text-[#25A6E2] transition-colors">
                     {data[0].headline}
                   </h2>
                   <p className="text-gray-600 mb-6 line-clamp-3">
@@ -110,7 +110,7 @@ export default async function NewsPage() {
                     <div className="bg-gray-200 w-full h-full" />
                   )}
                   <div className="absolute top-4 left-4">
-                    <span className="bg-indigo-600 text-white text-xs font-medium px-2 py-1 rounded">
+                    <span className="bg-[#25A6E2] text-white text-xs font-medium px-2 py-1 rounded">
                       {news.category || "News"}
                     </span>
                   </div>
@@ -124,7 +124,7 @@ export default async function NewsPage() {
                     <span className="mx-2">•</span>
                     <span>{getReadingTime(news.description)}</span>
                   </div>
-                  <h2 className="text-xl font-semibold text-gray-900 mb-3 hover:text-indigo-600 transition-colors line-clamp-2">
+                  <h2 className="text-xl font-semibold text-gray-900 mb-3 hover:text-[#25A6E2] transition-colors line-clamp-2">
                     {news.headline}
                   </h2>
                   <p className="text-gray-600 mb-4 line-clamp-3">
@@ -137,7 +137,7 @@ export default async function NewsPage() {
                       </div>
                       <span className="text-sm text-gray-700">MANS Pack C.</span>
                     </div>
-                    <span className="text-indigo-600 text-sm font-medium flex items-center">
+                    <span className="text-[#25A6E2] text-sm font-medium flex items-center">
                       Read more
                       <svg className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7"></path>
@@ -163,7 +163,7 @@ export default async function NewsPage() {
         )}
 
         {/* Newsletter Subscription */}
-        <div className="mt-16 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl p-8 md:p-12 text-center text-white">
+        <div className="mt-16 bg-gradient-to-r from-[#25A6E2] to-purple-600 rounded-2xl p-8 md:p-12 text-center text-white">
           <h2 className="text-2xl md:text-3xl font-bold mb-4">Stay Updated</h2>
           <p className="text-indigo-100 mb-6 max-w-2xl mx-auto">
             Subscribe to our newsletter to receive the latest news and updates directly in your inbox.
@@ -174,7 +174,7 @@ export default async function NewsPage() {
               placeholder="Your email address"
               className="flex-grow px-4 py-3 rounded-lg text-gray-900 focus:outline-none focus:ring-2 focus:ring-white"
             />
-            <button className="bg-white text-indigo-600 font-semibold px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors">
+            <button className="bg-white text-[#25A6E2] font-semibold px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors">
               Subscribe
             </button>
           </div>

@@ -29,10 +29,10 @@ export default function AboutUs() {
       </div>
 
       <div className="mt-8">
-        <h1 className="text-3xl md:text-5xl font-bold text-gray-900 mb-5">
+        <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-5">
           About Mans Packaging
         </h1>
-        <hr className="border-indigo-600 mb-5" />
+        <hr className="border-[#25A6E2] mb-5" />
         <p className="text-lg md:text-xl text-gray-700 mb-4 font-semibold">
           “Mans Printing and Packaging: A Leader in Innovative Packaging Solutions”
         </p>

@@ -47,11 +47,11 @@ const Mansphoto = () => {
       <div className="lg:w-1/2 lg:p-10 mt-10 lg:mt-0">
         <AnimationWrapper index={2}>
           <article>
-            <h2 className="border-l-4 text-black border-blue-600 lg:text-5xl text-3xl px-6 font-extrabold leading-snug">
-              About <span className="text-blue-600">MANS Printing & Packaging</span>
+            <h2 className="border-l-4 text-black border-[#25A6E2] lg:text-5xl text-md px-6 font-extrabold leading-snug">
+              About <span className="text-[#25A6E2]">MANS Printing & Packaging</span>
             </h2>
             
-            <p className="py-5 text-gray-700 lg:text-lg text-sm leading-relaxed">
+            <p className="py-5 text-gray-700 lg:text-lg text-xs leading-relaxed">
               MANS Printing and Packaging is a leading{" "}
               <strong>packaging manufacturing company in Dhaka, Bangladesh</strong>.
               Our mission is to deliver <em>customized</em> and{" "}
@@ -59,7 +59,7 @@ const Mansphoto = () => {
               from startups to large-scale enterprises.
             </p>
 
-            <p className="py-2 text-gray-600 text-sm lg:text-base leading-relaxed">
+            <p className="py-2 text-gray-600 lg:text-lg text-xs leading-relaxed">
               Founded in <strong>2020</strong>, we are a young, ambitious team with
               a passion for <strong>innovation, quality, and reliability</strong>.
               From <strong>e-commerce packaging</strong> to{" "}
@@ -68,9 +68,9 @@ const Mansphoto = () => {
               your brand identity.
             </p>
 
-            <p className="py-2 text-gray-600 text-sm lg:text-base leading-relaxed">
+            <p className="py-2 text-gray-600 lg:text-lg text-xs leading-relaxed">
               We pride ourselves on offering{" "}
-              <span className="font-semibold text-blue-600">
+              <span className="font-semibold text-[#25A6E2]">
                 fast, reliable service
               </span>{" "}
               while maintaining eco-friendly practices that support a greener
