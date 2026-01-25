@@ -119,7 +119,7 @@ const Ourservice = () => {
                 />
                 
               </div>
-              <div className="md:p-6 p-3">
+              <div className="md:p-6 p-3 text-center">
                 <h3 className="md:text-xl text-md font-semibold text-gray-900 mb-3 group-hover:text-[#25A6E2] transition-colors">
                   {service.heading}
                 </h3>
