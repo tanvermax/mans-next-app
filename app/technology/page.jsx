@@ -9,44 +9,44 @@ const technologyData = {
   main: {
     title: "Cutting-Edge Packaging Technology",
     description: "At Mans Printing and Packaging, we leverage the latest technological advancements to deliver superior packaging solutions that meet the highest quality standards and sustainability goals.",
-    image: "/api/placeholder/800/500"
+    image: "https://i.ibb.co.com/HLWps79w/Adpak-to-display-cutting-edge-packaging-solutions-at-PPMA-2023.webp"
   },
   features: [
     {
       title: "Digital Printing Technology",
       description: "High-resolution digital printing for vibrant colors and sharp details on all packaging materials.",
       icon: "🖨️",
-      image: "/api/placeholder/400/300"
+      image: "https://i.ibb.co.com/TBKZKP7h/GP-2.webp"
     },
     {
       title: "Eco-Friendly Materials",
       description: "Sustainable packaging solutions using recycled and biodegradable materials without compromising quality.",
       icon: "🌿",
-      image: "/api/placeholder/400/300"
+      image: "https://i.ibb.co.com/pBBnZ1tR/Sustainable-Material-980x498.webp"
     },
     {
       title: "Automated Production Lines",
       description: "State-of-the-art automated machinery for precision cutting, folding, and assembly with minimal waste.",
       icon: "⚙️",
-      image: "/api/placeholder/400/300"
+      image: "https://i.ibb.co.com/jZbNkQ7C/Packaging-2-1-950x570.jpg"
     },
     {
       title: "Quality Control Systems",
       description: "Advanced inspection systems ensuring every product meets our rigorous quality standards.",
       icon: "🔍",
-      image: "/api/placeholder/400/300"
+      image: "https://i.ibb.co.com/7NtjwhVr/premium-photo-1682141370135-37ecdd703b3f.avif"
     },
     {
       title: "Custom Design Software",
       description: "3D modeling and design software to visualize your packaging before production.",
       icon: "💻",
-      image: "/api/placeholder/400/300"
+      image: "https://i.ibb.co.com/CFQcN0L/photo-1700887944225-f148dd124305.avif"
     },
     {
       title: "RFID Integration",
       description: "Smart packaging solutions with RFID technology for inventory tracking and authentication.",
       icon: "📡",
-      image: "/api/placeholder/400/300"
+      image: "https://i.ibb.co.com/W4j1BW0W/The-integration-of-RFID-technology-with-information-systems-of-postal-operators.png"
     }
   ],
   stats: [
@@ -72,8 +72,8 @@ const Technology = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.7 }}
             >
-              <h1 className="text-4xl md:text-4xl font-bold mb-6">{technologyData.main.title}</h1>
-              <p className="text-xl mb-8 opacity-90">{technologyData.main.description}</p>
+              <h1 className="text-4xl md:text-4xl text-white font-bold mb-6">{technologyData.main.title}</h1>
+              <p className="text-xl  text-white mb-8 opacity-90">{technologyData.main.description}</p>
               <button className="bg-white text-blue-700 font-semibold py-3 px-8 rounded-lg hover:bg-blue-50 transition-colors duration-300">
                 Request a Technology Demo
               </button>
@@ -178,7 +178,7 @@ const Technology = () => {
           <div className="flex flex-col md:flex-row gap-8 items-center">
             <div className="md:w-1/2 relative h-80 rounded-xl overflow-hidden">
               <Image
-                src="/api/placeholder/600/400"
+                src="https://i.ibb.co.com/C5yJQcmz/Production-Process.webp"
                 alt="Technology process at Mans Packaging"
                 fill
                 className="object-cover"
