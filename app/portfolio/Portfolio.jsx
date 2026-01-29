@@ -10,19 +10,19 @@ function Portfolioo() {
     const [data, setData] = useState([]);
 
 
-  const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(true);
 
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const res = await axios.get("https://mans-server.vercel.app/portfolio");
-      if (res.data && res.data.length > 0) {
-        setLoading(false)
-      }
-      setData(res.data.reverse() || []);
-    };
-    fetchData();
-  }, [setData]);
+    useEffect(() => {
+        const fetchData = async () => {
+            const res = await axios.get("https://mans-server.vercel.app/portfolio");
+            if (res.data && res.data.length > 0) {
+                setLoading(false)
+            }
+            setData(res.data.reverse() || []);
+        };
+        fetchData();
+    }, [setData]);
 
 
 
@@ -33,14 +33,14 @@ function Portfolioo() {
             : data.filter((item) => item.type === filterType.toLowerCase());
 
 
-            if (loading) {
-                return <div><Loading /></div>
-            }
+    if (loading) {
+        return <div><Loading /></div>
+    }
     return (
         <div>
-            <div className=" place-items-center md:py-24 bg-gray-300 text-center">
-                <h3 className="text-xl md:text-4xl font-bold text-black">PROJECT PORTFOLIO</h3>
-                <p className="pt-5 md:text-xl text-xs p-4  text-black">
+            <div className=" place-items-center md:py-24 py-10 bg-gray-300 text-center">
+                <h3 className="text-xl md:text-4xl  font-bold text-black">PROJECT PORTFOLIO</h3>
+                <p className="pt-2 md:text-xl text-xs  text-black">
                     We are always committed to providing high-quality packaging
                     products as per client requirements. Be Happy With Us!
                 </p>
@@ -62,31 +62,31 @@ function Portfolioo() {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 p-4 md:max-w-7xl mx-auto">
-    {filteredData.map((imagedata) => (
-        <div 
-            key={imagedata._id} 
-            className="group relative w-full h-80 rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 bg-white border border-gray-100"
-        >
-            {/* Image Wrapper */}
-            <div className="relative w-full h-full transform group-hover:scale-110 transition-transform duration-700">
-                <Image
-                    src={imagedata.name}
-                    alt={imagedata.alt || "Portfolio Image"}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-cover" // Changed from contain to cover for a modern look
-                />
-            </div>
+                {filteredData.map((imagedata) => (
+                    <div
+                        key={imagedata._id}
+                        className="group relative w-full h-80 rounded-2xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 bg-white border border-gray-100"
+                    >
+                        {/* Image Wrapper */}
+                        <div className="relative w-full  h-full transform group-hover:scale-110 transition-transform duration-700">
+                            <Image
+                                src={imagedata.name}
+                                alt={imagedata.alt || "Portfolio Image"}
+                                fill
+                                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                className="object-cover " // Changed from contain to cover for a modern look
+                            />
+                        </div>
 
-            {/* Stylish Overlay (Shows on Hover) */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-                <p className="text-white font-medium text-lg translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                    {imagedata.type || "View Project"}
-                </p>
+                        {/* Stylish Overlay (Shows on Hover) */}
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
+                            <p className="text-white font-medium text-lg translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                                {imagedata.type || "View Project"}
+                            </p>
+                        </div>
+                    </div>
+                ))}
             </div>
-        </div>
-    ))}
-</div>
         </div>
     )
 }
