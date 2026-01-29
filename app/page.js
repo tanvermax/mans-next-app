@@ -26,7 +26,7 @@ export const metadata = {
 export default function Home() {
   return (
     <div className="">
-      <div className="min-h-[400px] md:min-h-[500px] lg:min-h-[700px]">
+      <div className="min-h-[400px] -z-50 md:min-h-[500px] lg:min-h-[700px]">
       <Banner/>
     </div>
       <Section1 />

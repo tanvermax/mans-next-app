@@ -156,147 +156,7 @@ export default function ContactUs() {
             </div>
           </div>
 
-          {/* Contact Form Section */}
-          <div className="lg:w-3/5">
-            <div className="bg-white rounded-xl shadow-lg p-6 md:p-8">
-              <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
-                Send Us a Message
-              </h2>
-              <p className="text-gray-600 mb-6">
-                Have questions about our packaging solutions? Fill out the form below and our team will get back to you shortly.
-              </p>
-              
-              <form className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                      Full Name *
-                    </label>
-                    <input
-                      type="text"
-                      id="name"
-                      name="name"
-                      required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
-                      placeholder="John Doe"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
-                      Company Name
-                    </label>
-                    <input
-                      type="text"
-                      id="company"
-                      name="company"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
-                      placeholder="Your Company"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                      Email Address *
-                    </label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
-                      placeholder="john@example.com"
-                    />
-                  </div>
-                  <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                      Phone Number
-                    </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
-                      placeholder="+1 (234) 567-890"
-                    />
-                  </div>
-                </div>
-
-                <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
-                    Subject *
-                  </label>
-                  <select
-                    id="subject"
-                    name="subject"
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
-                  >
-                    <option value="">Select a subject</option>
-                    <option value="custom-boxes">Custom Boxes</option>
-                    <option value="packaging-design">Packaging Design</option>
-                    <option value="bulk-order">Bulk Order Inquiry</option>
-                    <option value="quote">Request a Quote</option>
-                    <option value="other">Other</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                    Message *
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows="6"
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
-                    placeholder="Tell us about your packaging needs..."
-                  ></textarea>
-                </div>
-
-                <div className="flex items-center">
-                  <input
-                    type="checkbox"
-                    id="consent"
-                    name="consent"
-                    required
-                    className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
-                  />
-                  <label htmlFor="consent" className="ml-3 text-sm text-gray-600">
-                    I agree to receive communications from Mans Packaging regarding my inquiry.
-                  </label>
-                </div>
-
-                <button
-                  type="submit"
-                  className="w-full md:w-auto bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg transition duration-300 transform hover:scale-105"
-                >
-                  Send Message
-                </button>
-              </form>
-            </div>
-
-            {/* FAQ Section */}
-            <div className="mt-8 bg-white rounded-xl shadow-lg p-6 md:p-8">
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h3>
-              <div className="space-y-4">
-                <div className="border-b border-gray-200 pb-4">
-                  <h4 className="font-semibold text-gray-800 mb-2">What is your typical turnaround time?</h4>
-                  <p className="text-gray-600">Standard orders typically take 7-10 business days. Rush orders are available upon request.</p>
-                </div>
-                <div className="border-b border-gray-200 pb-4">
-                  <h4 className="font-semibold text-gray-800 mb-2">Do you offer design services?</h4>
-                  <p className="text-gray-600">Yes, we have an in-house design team to help create custom packaging designs that match your brand.</p>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-gray-800 mb-2">What is your minimum order quantity?</h4>
-                  <p className="text-gray-600">Our MOQ varies based on product type. Contact us for specific requirements.</p>
-                </div>
-              </div>
-            </div>
-          </div>
+        
         </div>
       </main>
 
@@ -331,3 +191,9 @@ export default function ContactUs() {
     </div>
   );
 }
+
+
+// conatc us office address
+// navber 
+//  portfolio dekstop
+// dhasfbord

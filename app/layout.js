@@ -55,9 +55,9 @@ export default async function RootLayout({ children }) {
           ></iframe>
         </noscript>
         {/* Top Info Bar */}
-        <div className="bg-linear-to-r from-blue-800 to-purple-700 text-white py-2 px-4 text-sm">
-          <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">
-            <div className="flex flex-wrap justify-center md:justify-start items-center gap-4 md:gap-6 mb-2 md:mb-0">
+        <div className="bg-linear-to-r  from-blue-800 to-purple-700 text-white py-2 px-4 text-sm">
+          <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center">
+            <div className="flex flex-wrap justify-center md:justify-start items-center gap-2 md:gap-6 mb-2 md:mb-0">
               <div className="flex md:text-xs lg:text-base text-[6px] items-center gap-1">
                 <FaPhone className="text-blue-300" />
                 <span>+8801787-108216</span>
@@ -103,7 +103,9 @@ export default async function RootLayout({ children }) {
         
         <main className="min-h-screen  bg-linear-to-b from-gray-50 to-white">
           <ToastContainer />
-          <Navbar />
+         <div className=' sticky top-0 z-50 '>
+           <Navbar />
+         </div>
           {children}
         </main>
         <FloatingChat />

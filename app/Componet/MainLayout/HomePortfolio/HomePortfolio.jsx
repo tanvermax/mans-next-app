@@ -52,12 +52,7 @@ const HomePortfolio = () => {
               className="rounded-2xl  w-full md:h-[45vh] group-hover:scale-110 transition-transform duration-500 ease-in-out"
             />
 
-            {/* Overlay */}
-            <div className="absolute inset-0 bg-[#00000028] bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-              <span className="text-white font-semibold text-sm md:text-base">
-                View Project
-              </span>
-            </div>
+           
           </article>
         ))}
 
