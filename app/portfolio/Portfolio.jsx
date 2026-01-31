@@ -79,7 +79,7 @@ function Portfolioo() {
                                     alt={imagedata.alt || "Portfolio Image"}
                                     fill
                                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                    className="p-2 bg-[#D9D9D9] " 
+                                    className=" " 
                                 />
                             </div>
 
