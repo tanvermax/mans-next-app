@@ -29,7 +29,7 @@ const HomePortfolio = () => {
       {/* Heading */}
       <div>
         <h2 className="lg:text-5xl md:text-4xl text-2xl font-extrabold tracking-tight text-gray-900">
-          {/* Our <span className="text-[#25A6E2]">Portfolio</span> */}
+          Our <span className="text-[#25A6E2]">Portfolio</span>
         </h2>
         <p className="mt-4 lg:text-lg text-sm text-gray-600">
           A showcase of the projects we’ve successfully delivered
