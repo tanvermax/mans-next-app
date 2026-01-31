@@ -49,7 +49,7 @@ const HomePortfolio = () => {
               width={450}
               height={300}
               priority={index < 2} // lazy loads except first 2
-              className="rounded-2xl  w-full md:h-[45vh] group-hover:scale-110 transition-transform duration-500 ease-in-out"
+              className="rounded-2xl  w-full md:h-[40vh] group-hover:scale-110 transition-transform duration-500 ease-in-out"
             />
 
            
