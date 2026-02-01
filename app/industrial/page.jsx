@@ -1,7 +1,7 @@
 import React from "react";
 import Hook1 from "../hook/Hook1";
 import photo from '../assets/industrial-packaging-boxes-1024x759-B0J7ZMCo.webp'
-import photo1 from '../assets/industrial-packaging-boxes-1024x759-B0J7ZMCo.webp'
+import photo1 from '../assets/industrial-packaging-boxes-1024x759.jpg'
 
 
 export const metadata = {
