@@ -1,5 +1,7 @@
 import React from "react";
 import Hook1 from "../hook/Hook1";
+import photo from '../assets/industrial-packaging-boxes-1024x759-B0J7ZMCo.webp'
+import photo1 from '../assets/industrial-packaging-boxes-1024x759-B0J7ZMCo.webp'
 
 
 export const metadata = {
@@ -13,8 +15,8 @@ const Industrial = () => {
      
 
       <Hook1
-        photo="https://manspackaging.com/assets/industrial-packaging-boxes-1024x759-B0J7ZMCo.jpg"
-        photo2="https://manspackaging.com/assets/Foresters-in-the-Woods-1024x683-BZt3CzjV.jpg"
+        photo={photo}
+        photo2={photo1}
         mainheading="INDUSTRIAL PACKAGING BOXES AND SOLUTIONS"
         headin1="Revolutionizing Industrial Packaging. Cutting-Edge Solutions for Your Business"
         headin2="Be good to the environment"
