@@ -19,8 +19,8 @@ const Ecom = () => {
         E-COMMERCE PACKAGING | CUSTOM SHIPPING CARTON BOXES
       </h1>
      <Hook1
-        photo="https://manspackaging.com/assets/industrial-packaging-boxes-1024x759-B0J7ZMCo.jpg"
-        photo2="https://manspackaging.com/assets/industrial-packaging-boxes-1024x759-B0J7ZMCo.jpg"
+        photo={photo}
+        photo2={photo1}
         mainheading="Garments Packaging Boxes And Solutions"
         headin1="Scale. Savings. Sustainability."
         headin2="E-COMMERCE PACKAGING | CUSTOM SHIPPING CARTON BOXES" // Optional: can leave empty or add a second heading if needed

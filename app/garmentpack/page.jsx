@@ -2,6 +2,8 @@ import React from "react";
 import Head from "next/head";
 import Hook1 from "../hook/Hook1";
 
+import photo from '../assets/industrial-packaging-boxes-1024x759-B0J7ZMCo.webp'
+import photo1 from '../assets/industrial-packaging-boxes-1024x759.jpg'
 
 
 export const metadata = {
@@ -19,8 +21,8 @@ const Garmentpack = () => {
       </Head>
 
       <Hook1
-        photo="https://manspackaging.com/assets/industrial-packaging-boxes-1024x759-B0J7ZMCo.jpg"
-        photo2="https://manspackaging.com/assets/industrial-packaging-boxes-1024x759-B0J7ZMCo.jpg"
+        photo={photo}
+        photo2={photo1}
         mainheading="Garments Packaging Boxes And Solutions"
         headin1="Lightweight & Cost-Effective: Fashion Industry Packaging Solutions"
         headin2="" // Optional: can leave empty or add a second heading if needed

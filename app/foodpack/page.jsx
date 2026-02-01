@@ -1,5 +1,7 @@
 import React from "react";
 import Hook1 from "../hook/Hook1";
+import photo from '../assets/industrial-packaging-boxes-1024x759-B0J7ZMCo.webp'
+import photo1 from '../assets/industrial-packaging-boxes-1024x759.jpg'
 
 export const metadata = {
   title: 'Food Packaging Boxes And Solution | Mans Packaging',
@@ -12,8 +14,8 @@ const Foodpack = () => {
      
 
       <Hook1
-        photo="https://manspackaging.com/assets/industrial-packaging-boxes-1024x759-B0J7ZMCo.jpg"
-        photo2="https://manspackaging.com/assets/industrial-packaging-boxes-1024x759-B0J7ZMCo.jpg"
+        photo={photo}
+        photo2={photo1}
         mainheading="FOOD PACKAGING BOXES AND SOLUTIONS"
         headin1="Fresh & Secure: Elevate Your Food Brand with Custom Food Boxes"
         headin2="CUSTOM FOOD PACKAGING: The Key to Unlocking Your Product’s Potential."
