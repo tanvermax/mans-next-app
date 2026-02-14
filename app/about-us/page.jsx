@@ -20,9 +20,9 @@ export default function ContactUs() {
         />
 
         <div className="relative z-20 h-full flex flex-col justify-center items-center text-white text-center px-4">
-          <h1 className="text-4xl md:text-5xl font-bold">
+          {/* <h1 className="text-4xl md:text-5xl font-bold">
             Our Locations
-          </h1>
+          </h1> */}
           <p className="mt-3 text-lg max-w-xl">
             Visit our corporate office or factory to explore our packaging production and services
           </p>
