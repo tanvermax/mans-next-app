@@ -19,10 +19,12 @@ const montserrat = Montserrat({
   variable: '--font-montserrat',
 });
 
+
+
 export const metadata = {
   title: "MANS Packaging - Premium Packaging Solutions in BD",
   description: "MANS Packaging offers high-quality packaging in BD solutions for businesses of all sizes. Contact us for custom packaging needs.",
-  keywords: ["packaging dhaka", "packaging in BD","custom boxes bangladesh", "MANS packaging", "industrial packaging","ecommerce packaging", "food packaging", "garment packaging", "sustainable packaging", "printing and packaging", "packaging solutions"],
+  keywords: ["packaging dhaka", "packaging in BD","packaging in bd", "custom boxes bangladesh", "MANS packaging", "industrial packaging", "ecommerce packaging", "food packaging", "garment packaging", "sustainable packaging", "printing and packaging", "packaging solutions"],
 };
 
 
@@ -45,7 +47,7 @@ export default async function RootLayout({ children }) {
           })(window,document,'script','dataLayer','GTM-NFJSN3JD');`}
         </Script>
       </head>
-      <body  suppressHydrationWarning className={`${montserrat.className} antialiased `}>
+      <body suppressHydrationWarning className={`${montserrat.className} antialiased `}>
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-NFJSN3JD"
@@ -100,12 +102,12 @@ export default async function RootLayout({ children }) {
             </div>
           </div>
         </div>
-        
+
         <main className="min-h-screen  bg-linear-to-b from-gray-50 to-white">
           <ToastContainer />
-         <div className=' sticky top-0 z-50 '>
-           <Navbar />
-         </div>
+          <div className=' sticky top-0 z-50 '>
+            <Navbar />
+          </div>
           {children}
         </main>
         <FloatingChat />
