@@ -8,7 +8,7 @@ import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import Image from "next/image";
 import BannerSkeleton from "./BannerSkeleton";
-import axios from "axios";
+
 
 const Banner = () => {
   const [slides, setSlides] = useState([]);
@@ -17,9 +17,17 @@ const Banner = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+
       try {
-        const res = await axios.get("https://mans-server.vercel.app/banner");
-        setSlides(res.data || []);
+        const response = await fetch("https://mans-server.vercel.app/banner", {
+          next: {
+            revalidate: 300
+          }
+        });
+        const data = await response.json();
+        // const res = await axios.get("https://mans-server.vercel.app/banner");
+
+        setSlides(data || []);
       } catch (err) {
         console.error(err);
       } finally {

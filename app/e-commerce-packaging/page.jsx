@@ -8,7 +8,7 @@ import Faq from "../Componet/Faq/Faq";
 import Hook1 from "../hook/Hook1";
 
 export const metadata = {
-  title: 'E-Commerce Packaging | Mans Packaging',
+  title: 'E-Commerce Packaging | Custom Shipping Carton Boxes | Mans Packaging',
   description: 'Custom E-commerce Packaging | Shipping Carton Boxes | Mans Packaging',
 }
 
@@ -25,7 +25,7 @@ const Ecom = () => {
         headin1="Scale. Savings. Sustainability."
         headin2="E-COMMERCE PACKAGING | CUSTOM SHIPPING CARTON BOXES" // Optional: can leave empty or add a second heading if needed
         descriptions1={[
-          ` We offer a wide range of custom e-commerce packaging solutions
+          `We offer a wide range of custom e-commerce packaging solutions
             that are designed to not only protect your products during
             transit, but also to create a memorable unboxing experience
             for the customers. From custom printed boxes and bags, to
@@ -36,10 +36,9 @@ const Ecom = () => {
             while also meeting your specific needs and budget. Whether you
             need packaging for a one-time event, or a recurring order, we
             have the flexibility to meet your needs.
-            `,,
+            `,
         ]}
-        descriptions2={[`
-            At Mans Printing and Packaging, we understand the importance of
+        descriptions2={[`At Mans Printing and Packaging, we understand the importance of
             sustainability in ecommerce packaging. That’s why we offer
             eco-friendly options that not only reduce your environmental
             impact, but also help to differentiate your brand and promote a

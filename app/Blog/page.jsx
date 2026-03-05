@@ -1,15 +1,18 @@
 import Link from "next/link";
 import Image from "next/image";
 
-// NO "use client" here
-// NO useState or useEffect
+
 
 export default async function NewsPage() {
   // 1. Fetch data directly on the server
   const response = await fetch("https://mans-server.vercel.app/newspost", {
-    next: { revalidate: 3600 } // Refresh data every hour
+    next:  {
+      revalidate: 300 
+    }
   });
-  const data = await response.json();
+
+const data = await response.json();
+
 
   const featuredArticle = data && data.length > 0 ? data[0] : null;
   console.log(data)
