@@ -20,7 +20,7 @@ const Newspart = () => {
   useEffect(() => {
     const fetchData = async () => {
       const res = await axios.get("https://mans-server.vercel.app/newspost");
-      if(res){setLoading(false);}
+      if (res) { setLoading(false); }
       setData(res.data);
     };
     fetchData();
@@ -210,14 +210,16 @@ const Newspart = () => {
 
                           <div className="mb-6">
                             <Link href={`/Blog/${news.slug || news._id}`}>
-                            <h3 className="md:text-xl text-md font-bold text-gray-900 mb-3 line-clamp-2 hover:text-[#25A6E2] transition-colors">
-                              {news.headline}
-                            </h3>
-                          </Link>
+                              <h3 className="md:text-xl text-md font-bold text-gray-900 mb-3 line-clamp-2 hover:text-[#25A6E2] transition-colors">
+                                {news.headline}
+                              </h3>
+                            </Link>
 
-                          <p className="text-gray-600 mb-4 md:text-base text-xs line-clamp-3">
-                            {news.description}
-                          </p>
+                            <div className="text-lg leading-7 mb-6 text-gray-800 line-clamp-5">
+                              {news.description.split("\n").map((line, i) => (
+                                <p key={i}>{line}</p>
+                              ))}
+                            </div>
                           </div>
 
                           <div className="flex items-center justify-between">
