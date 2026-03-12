@@ -17,7 +17,7 @@ const Garmentpack = () => {
     <>
       <Head>
         <meta charSet="utf-8" />
-        <title>Garments Packaging Boxes And Solutions | Mans Packaging</title>
+        <title>GARMENTS PACKAGING BOXES AND SOLUTIONS | Mans Packaging</title>
       </Head>
 
       <Hook1

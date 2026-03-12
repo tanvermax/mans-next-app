@@ -47,7 +47,7 @@ const Hook1 = ({
             />
           </div>
           <div className="place-content-center lg:px-10 p-2">
-            <h2 className="md:text-4xl font-bold mb-10">{headin2}</h2>
+            <h2 className="md:text-4xl text-black font-bold mb-10">{headin2}</h2>
             <div className="text-gray-700 md:text-base text-xs space-y-4">
               {descriptions2.map((text, i) => (
                 <p key={i}>{text}</p>

@@ -75,7 +75,7 @@ const data = await response.json();
                     <time dateTime={data[0].createdAt}>
                       {formatDate(data[0].createdAt)}
                     </time>
-                    <span className="mx-2">•</span>
+                    <span className="mx-2 whitespace-pre-line">•</span>
                     <span>{getReadingTime(data[0].description)}</span>
                   </div>
                   <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 hover:text-[#25A6E2] transition-colors">

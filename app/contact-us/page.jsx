@@ -16,7 +16,7 @@ const Contact = () => {
   return (
     <div className="bg-gray-50 overflow-x-hidden">
       {/* Hero Section */}
-      <section className="relative py-12 md:py-24 bg-gradient-to-r from-blue-900 to-blue-700">
+      <section className="relative py-12 md:py-24 bg-linear-to-r from-blue-900 to-blue-700">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center">
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-4 md:mb-6">
@@ -51,7 +51,7 @@ const Contact = () => {
       <section className="py-8 md:py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
-            
+
             {/* Left Contact Info Section */}
             <div className="space-y-6 md:space-y-8">
               <div className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100">
@@ -71,7 +71,7 @@ const Contact = () => {
                     </h2>
                   </div>
                 </div>
-                
+
                 <div className="p-5 md:p-8 space-y-6">
                   {/* Phone */}
                   <div className="flex items-start space-x-4">
@@ -99,7 +99,7 @@ const Contact = () => {
                     <div className="break-all">
                       <h3 className="text-base md:text-lg font-semibold text-gray-900 mb-1">Email Address</h3>
                       <a href="mailto:manspacking@gmail.com" className="text-lg md:text-xl text-gray-700 hover:text-blue-600 transition-colors">
-                        manspacking@gmail.com
+                        contact@manspackaging.com
                       </a>
                     </div>
                   </div>
@@ -139,12 +139,12 @@ const Contact = () => {
                 <div className="space-y-3 text-sm md:text-base">
                   <div className="flex justify-between items-center pb-2 border-b border-gray-50">
                     <span className="text-gray-600">Sun - Thu</span>
-                    <span className="font-semibold text-gray-900">9:00 AM - 6:00 PM</span>
+                    <span className="font-semibold text-gray-900">8:00 AM - 5:00 PM</span>
                   </div>
-                  <div className="flex justify-between items-center pb-2 border-b border-gray-50">
+                  {/* <div className="flex justify-between items-center pb-2 border-b border-gray-50">
                     <span className="text-gray-600">Friday</span>
                     <span className="font-semibold text-gray-900">9:00 AM - 1:00 PM</span>
-                  </div>
+                  </div> */}
                   <div className="flex justify-between items-center">
                     <span className="text-gray-600">Saturday</span>
                     <span className="font-medium text-red-500">Closed</span>
@@ -161,7 +161,7 @@ const Contact = () => {
               <p className="text-sm md:text-base text-gray-600 mb-8">
                 Fill out the form below and our packaging experts will contact you shortly.
               </p>
-              
+
               <form className="space-y-5" >
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   <div>
@@ -287,6 +287,24 @@ const Contact = () => {
           </div>
         </div>
       </section>
+      <section className="py-14 bg-white">
+        <div className="w-11/12 max-w-7xl mx-auto text-center">
+
+          <h2 className="text-3xl font-bold mb-8">
+            Office Location Map
+          </h2>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d228.32146333511758!2d90.45182980995266!3d23.70657213080176!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b7c5fae0f975%3A0x6a361afb009d75b4!2sMANS%20PRINTING%20%26%20PACKAGING-(Office)!5e0!3m2!1sen!2sbd!4v1773294195304!5m2!1sen!2sbd"
+          //  width="600" height="450" style="border:0;" 
+          className="w-full h-100 rounded-xl shadow-lg"
+           loading="lazy" ></iframe>
+          {/* <iframe
+            src="https://maps.google.com/maps?q=jatrabari%20dhaka&t=&z=13&ie=UTF8&iwloc=&output=embed"
+            className="w-full h-100 rounded-xl shadow-lg"
+            loading="lazy"
+          /> */}
+
+        </div>
+      </section>
 
       {/* Structured Data Script remains same */}
       <script
@@ -310,7 +328,7 @@ const Contact = () => {
             "openingHours": ["Su-Th 09:00-18:00", "Fr 09:00-13:00"],
             "url": "https://manspackaging.com/contact-us",
             "priceRange": "$$",
-            "areaServed": {"@type": "Country", "name": "Bangladesh"}
+            "areaServed": { "@type": "Country", "name": "Bangladesh" }
           })
         }}
       />
